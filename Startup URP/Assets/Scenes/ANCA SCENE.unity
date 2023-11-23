@@ -184,7 +184,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 17
+  field of view: 24
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -211,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 152526387}
   serializedVersion: 2
   m_LocalRotation: {x: 0.09318551, y: 0.9066599, z: -0.28226295, w: 0.29935253}
-  m_LocalPosition: {x: -28.6, y: 26.9, z: 36.5}
+  m_LocalPosition: {x: -25.13, y: 24.01, z: 31.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 982278082}
   smoothSpeed: 10
-  offset: {x: -24.5, y: 25, z: 31.1}
+  offset: {x: -25.13, y: 24.01, z: 31.83}
 --- !u!1001 &300366929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -347,7 +347,7 @@ PrefabInstance:
     - target: {fileID: 7242332187058997594, guid: 97275521653297449b0a79aba226858f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7455928840623065516, guid: 97275521653297449b0a79aba226858f,
         type: 3}
@@ -382,7 +382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &945224648
 BoxCollider:
   m_ObjectHideFlags: 0
