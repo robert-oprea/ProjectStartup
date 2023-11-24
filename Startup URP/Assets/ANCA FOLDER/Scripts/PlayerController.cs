@@ -1,15 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-    CustomActions input;
-
     NavMeshAgent agent;
     Animator animator;
+    Rigidbody rb;
 
     [Header("Movement")]
     [SerializeField] LayerMask clickableLayers;
@@ -20,38 +16,40 @@ public class PlayerController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-
-        input = new CustomActions();
-        AssignInputs();
+        rb = GetComponent<Rigidbody>();
     }
 
-    void AssignInputs()
+    void Update()
     {
-        input.Main.Move.performed += ctx => ClickToMove();
+        // Check for left mouse button click
+        if (Input.GetMouseButtonDown(0))
+        {
+            // Check if the pointer is over a UI element using raycasting
+            if (!IsPointerOverUI())
+            {
+                MoveToMouseClick();
+            }
+        }
+
+        FaceTarget();
     }
 
-    void ClickToMove()
+    void MoveToMouseClick()
     {
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, clickableLayers))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, clickableLayers))
         {
             agent.destination = hit.point;
         }
     }
 
-    void OnEnable()
+    bool IsPointerOverUI()
     {
-        input.Enable();
-    }
-
-    void OnDisable()
-    {
-        input.Disable();
-    }
-
-    void Update()
-    {
-        FaceTarget();
+        // Implement your own raycasting logic to check if the pointer is over a UI element
+        // For example, you can use Physics.Raycast, EventSystem.RaycastAll, or other techniques
+        // Return true if the pointer is over a UI element, otherwise, return false
+        // This depends on your specific UI setup and requirements
+        return false;
     }
 
     void FaceTarget()
@@ -61,8 +59,17 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("SELECTABLE") && collision.gameObject.GetComponent<Outline>().enabled == true)
+
+            {
+                agent.destination = agent.transform.position;
+        }
+    }
+
     void SetAnimation()
     {
-
+        // Implement animation logic if needed
     }
 }
