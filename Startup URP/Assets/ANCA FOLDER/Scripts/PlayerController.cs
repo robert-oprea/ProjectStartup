@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("SELECTABLE") && collision.gameObject.GetComponent<Outline>().enabled == true)
+       
 
             {
                 agent.destination = agent.transform.position;
