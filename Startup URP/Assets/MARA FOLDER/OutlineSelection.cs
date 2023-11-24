@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class OutlineSelection : MonoBehaviour
 {
-    public Transform highlight;
+    private Transform highlight;
     private Transform selection;
     private RaycastHit raycastHit;
 
