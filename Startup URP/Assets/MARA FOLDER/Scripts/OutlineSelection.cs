@@ -12,7 +12,7 @@ public class OutlineSelection : MonoBehaviour
     private Transform selection;
     private RaycastHit raycastHit;
 
-    void Update()
+    public void Update()
     {
         // Highlight
         if (highlight != null)
