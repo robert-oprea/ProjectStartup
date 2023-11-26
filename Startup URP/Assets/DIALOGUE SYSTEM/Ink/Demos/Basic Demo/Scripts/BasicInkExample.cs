@@ -10,11 +10,12 @@ public class BasicInkExample : MonoBehaviour {
     void Awake () {
 		// Remove the default message
 		RemoveChildren();
-		StartStory();
+		//StartStory();
+
 	}
 
 	// Creates a new Story object with the compiled story which we can then play!
-	void StartStory () {
+	public void StartStory () {
 		story = new Story (inkJSONAsset.text);
         if(OnCreateStory != null) OnCreateStory(story);
 		RefreshView();
@@ -82,13 +83,13 @@ public class BasicInkExample : MonoBehaviour {
 
 		// Make the button expand to fit the text
 		HorizontalLayoutGroup layoutGroup = choice.GetComponent <HorizontalLayoutGroup> ();
-		layoutGroup.childForceExpandHeight = false;
+		layoutGroup.childForceExpandHeight = true;
 
 		return choice;
 	}
 
 	// Destroys all the children of this gameobject (all the UI)
-	void RemoveChildren () {
+	public void RemoveChildren () {
 		int childCount = canvas.transform.childCount;
 		for (int i = childCount - 1; i >= 0; --i) {
 			Destroy (canvas.transform.GetChild (i).gameObject);

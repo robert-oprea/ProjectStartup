@@ -37,16 +37,26 @@ public class PlayerController : MonoBehaviour
     void MoveToMouseClick()
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, clickableLayers))
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, 100, clickableLayers))
         {
-            agent.destination = hit.point;
+            if (hit.collider != null)
+            {
+                agent.destination = hit.point;                
+            }
+
+            if(!hit.collider.CompareTag("Player") || !hit.collider.CompareTag("Ground"))
+            {
+                agent.destination = hit.point;
+            }
         }
+
     }
 
     bool IsPointerOverUI()
     {
         // Implement your own raycasting logic to check if the pointer is over a UI element
-        // For example, you can use Physics.Raycast, EventSystem.RaycastAll, or other techniques
         // Return true if the pointer is over a UI element, otherwise, return false
         // This depends on your specific UI setup and requirements
         return false;
@@ -54,19 +64,7 @@ public class PlayerController : MonoBehaviour
 
     void FaceTarget()
     {
-        Vector3 direction = (agent.destination - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("SELECTABLE") && collision.gameObject.GetComponent<Outline>().enabled == true)
-       
-
-            {
-                agent.destination = agent.transform.position;
-        }
+        // Implement face target logic if needed
     }
 
     void SetAnimation()
