@@ -46,9 +46,9 @@ public class PlayerController : MonoBehaviour
                 agent.destination = hit.point;                
             }
 
-            if(!hit.collider.CompareTag("Player") || !hit.collider.CompareTag("Ground"))
+            if(!hit.collider.CompareTag("Ground"))
             {
-                agent.destination = hit.point;
+                agent.destination = hit.point ;
             }
         }
 
