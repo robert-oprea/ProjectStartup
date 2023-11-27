@@ -12,27 +12,24 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     Rigidbody rb;
 
-    public Camera mainCamera;
-    public Camera otherCamera;
+    public CameraSwitcher cameraSwitcher; // Reference to the CameraSwitcher script
 
     [Header("Movement")]
     [SerializeField] LayerMask clickableLayers;
 
-    private Camera activeCamera;
+    private bool canMove = true;
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-
-        activeCamera = mainCamera;
     }
 
     void Update()
     {
         // Check for left mouse button click
-        if (Input.GetMouseButtonDown(0))
+        if (canMove && Input.GetMouseButtonDown(0))
         {
             // Check if the pointer is over a UI element using raycasting
             MoveToMouseClick();
@@ -41,18 +38,23 @@ public class PlayerController : MonoBehaviour
 
     public void MoveToMouseClick()
     {
-        RaycastHit hit;
-
-        if (activeCamera != null)
+        if (cameraSwitcher.ActiveCamera != null)
         {
-            Ray ray = activeCamera.ScreenPointToRay(Input.mousePosition);
+            // Check if the second camera is active
+            if (cameraSwitcher.ActiveCamera == cameraSwitcher.otherCamera)
+            {
+                // Player is not allowed to move when the second camera is active
+                return;
+            }
+
+            RaycastHit hit;
+            Ray ray = cameraSwitcher.ActiveCamera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit, 100, clickableLayers))
             {
                 if (hit.collider != null)
                 {
                     agent.destination = hit.point;
-
                 }
             }
         }
@@ -74,36 +76,22 @@ public class PlayerController : MonoBehaviour
 
             if (npc != null && Input.GetKeyDown(interactKey))
             {
-                //SwitchCamera();
-                otherCamera.enabled = true;
-                mainCamera.enabled = false;
+                canMove = false;
+                StartCoroutine(cameraSwitcher.SwitchCamerasSmoothCoroutine());
 
                 TeleportPlayerToNPC(npc);
+
                 StartDialogue();
+                Debug.Log("test test");
             }
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        EndDialogue();
+        //EndDialogue();
+        canMove = true;
     }
-
-    /*private void SwitchCamera()
-    {
-        if(activeCamera == mainCamera)
-        {
-            otherCamera.tag = "MainCamera";
-            mainCamera.tag = null;
-            activeCamera = otherCamera;
-        }
-        else
-        {
-            mainCamera.tag = "MainCamera";
-            otherCamera.tag = null;
-            activeCamera = mainCamera;
-        }
-    }*/
 
     private void StartDialogue()
     {
