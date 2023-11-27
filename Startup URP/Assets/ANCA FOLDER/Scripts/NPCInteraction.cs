@@ -1,33 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class NPCInteraction : MonoBehaviour
 {
     [SerializeField]
     private BasicInkExample inkDialogueScript; // Reference to the Ink dialogue script
+    public KeyCode interactionKey = KeyCode.E;
 
-    [SerializeField]
-    private KeyCode interactionKey = KeyCode.E;
-
+ 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && Input.GetKeyDown(interactionKey))
         {
-            // Display an interaction prompt or button, e.g., show "Press E to Interact" on the UI
+            Debug.Log("E pressed");
 
-            if (Input.GetKeyDown(interactionKey))
-            {
-                Debug.Log("e pressed");
-                // Trigger the dialogue when the player presses the interaction key
-                inkDialogueScript.StartStory();
-            }
+            StartDialogue();
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            inkDialogueScript.RemoveChildren();
-        }
+        inkDialogueScript.RemoveChildren();
+    }
+
+    private void StartDialogue()
+    {
+        // Trigger the dialogue or any other actions you want when interacting with the NPC
+        inkDialogueScript.StartStory();
     }
 }

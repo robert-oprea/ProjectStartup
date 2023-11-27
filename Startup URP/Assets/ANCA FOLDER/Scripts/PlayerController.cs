@@ -3,20 +3,30 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    private BasicInkExample inkDialogueScript; // Reference to the Ink dialogue script
+
+    public KeyCode interactKey = KeyCode.E;
+
     NavMeshAgent agent;
     Animator animator;
     Rigidbody rb;
 
+    public Camera mainCamera;
+    public Camera otherCamera;
+
     [Header("Movement")]
     [SerializeField] LayerMask clickableLayers;
 
-    float lookRotationSpeed = 5f;
+    private Camera activeCamera;
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+
+        activeCamera = mainCamera;
     }
 
     void Update()
@@ -25,46 +35,85 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             // Check if the pointer is over a UI element using raycasting
-            if (!IsPointerOverUI())
-            {
-                MoveToMouseClick();
-            }
+            MoveToMouseClick();
         }
-
-        FaceTarget();
     }
 
-    void MoveToMouseClick()
+    public void MoveToMouseClick()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 100, clickableLayers))
+        if (activeCamera != null)
         {
-            if (hit.collider != null)
-            {
-                agent.destination = hit.point;                
-            }
+            Ray ray = activeCamera.ScreenPointToRay(Input.mousePosition);
 
-            if(!hit.collider.CompareTag("Ground"))
+            if (Physics.Raycast(ray, out hit, 100, clickableLayers))
             {
-                agent.destination = hit.point ;
+                if (hit.collider != null)
+                {
+                    agent.destination = hit.point;
+
+                }
             }
         }
-
     }
 
-    bool IsPointerOverUI()
+    private void TeleportPlayerToNPC(NPCController npc)
     {
-        // Implement your own raycasting logic to check if the pointer is over a UI element
-        // Return true if the pointer is over a UI element, otherwise, return false
-        // This depends on your specific UI setup and requirements
-        return false;
+        transform.position = npc.emptyChildTransform.position;
+        agent.ResetPath();
     }
 
-    void FaceTarget()
+    private void OnCollisionStay(Collision collision)
     {
-        // Implement face target logic if needed
+        if (collision.gameObject.CompareTag("NPC"))
+        {
+            agent.ResetPath();
+
+            NPCController npc = collision.gameObject.GetComponent<NPCController>();
+
+            if (npc != null && Input.GetKeyDown(interactKey))
+            {
+                //SwitchCamera();
+                otherCamera.enabled = true;
+                mainCamera.enabled = false;
+
+                TeleportPlayerToNPC(npc);
+                StartDialogue();
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        EndDialogue();
+    }
+
+    /*private void SwitchCamera()
+    {
+        if(activeCamera == mainCamera)
+        {
+            otherCamera.tag = "MainCamera";
+            mainCamera.tag = null;
+            activeCamera = otherCamera;
+        }
+        else
+        {
+            mainCamera.tag = "MainCamera";
+            otherCamera.tag = null;
+            activeCamera = mainCamera;
+        }
+    }*/
+
+    private void StartDialogue()
+    {
+        // Trigger the dialogue or any other actions you want when interacting with the NPC
+        inkDialogueScript.StartStory();
+    }
+
+    private void EndDialogue()
+    {
+        inkDialogueScript.RemoveChildren();
     }
 
     void SetAnimation()
