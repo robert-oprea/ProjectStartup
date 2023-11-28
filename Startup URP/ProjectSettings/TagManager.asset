@@ -6,6 +6,9 @@ TagManager:
   tags:
   - SELECTABLE
   - DROP
+  - 1
+  - 2
+  - 3
   layers:
   - Default
   - TransparentFX
