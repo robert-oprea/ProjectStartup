@@ -3,14 +3,27 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    private BasicInkExample inkDialogueScript; // Reference to the Ink dialogue script
+
+    public KeyCode interactKey = KeyCode.E;
+
     NavMeshAgent agent;
     Animator animator;
     Rigidbody rb;
 
+    public CameraSwitcher cameraSwitcher; // Reference to the CameraSwitcher script
+
     [Header("Movement")]
     [SerializeField] LayerMask clickableLayers;
 
-    float lookRotationSpeed = 5f;
+
+    private bool canMove = true;
+
+    private void Start()
+    {
+       // BasicInkExample.OnLastChoiceMade += OnLastChoiceMadeHandler;
+    }
 
     void Awake()
     {
@@ -22,55 +35,85 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Check for left mouse button click
-        if (Input.GetMouseButtonDown(0))
+        if (canMove && Input.GetMouseButtonDown(0))
         {
             // Check if the pointer is over a UI element using raycasting
-            if (!IsPointerOverUI())
+            MoveToMouseClick();
+        }
+    }
+
+    public void MoveToMouseClick()
+    {
+        if (cameraSwitcher.ActiveCamera != null)
+        {
+            // Check if the second camera is active
+            if (cameraSwitcher.ActiveCamera == cameraSwitcher.otherCamera)
             {
-                MoveToMouseClick();
+                // Player is not allowed to move when the second camera is active
+                return;
+            }
+
+            RaycastHit hit;
+            Ray ray = cameraSwitcher.ActiveCamera.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, 100, clickableLayers))
+            {
+                if (hit.collider != null)
+                {
+                    agent.destination = hit.point;
+                }
             }
         }
-
-        FaceTarget();
     }
 
-    void MoveToMouseClick()
+    private void TeleportPlayerToNPC(NPCController npc)
     {
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, clickableLayers))
-        {
-            agent.destination = hit.point;
-        }
-    }
-
-    bool IsPointerOverUI()
-    {
-        // Implement your own raycasting logic to check if the pointer is over a UI element
-        // For example, you can use Physics.Raycast, EventSystem.RaycastAll, or other techniques
-        // Return true if the pointer is over a UI element, otherwise, return false
-        // This depends on your specific UI setup and requirements
-        return false;
-    }
-
-    void FaceTarget()
-    {
-        Vector3 direction = (agent.destination - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
+        transform.position = npc.emptyChildTransform.position;
+        agent.ResetPath();
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("SELECTABLE") && collision.gameObject.GetComponent<Outline>().enabled == true)
-       
+        if (collision.gameObject.CompareTag("NPC"))
+        {
+            agent.ResetPath();
 
+            NPCController npc = collision.gameObject.GetComponent<NPCController>();
+
+            if (npc != null && Input.GetKeyDown(interactKey))
             {
-                agent.destination = agent.transform.position;
+                canMove = false;
+                StartCoroutine(cameraSwitcher.SwitchCamerasSmoothCoroutine());
+
+                TeleportPlayerToNPC(npc);
+
+                StartDialogue();
+                Debug.Log("test test");
+            }
         }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        //EndDialogue();
+        canMove = true;
+    }
+
+    private void StartDialogue()
+    {
+        // Trigger the dialogue or any other actions you want when interacting with the NPC
+        inkDialogueScript.StartStory();
+    }
+
+    private void EndDialogue()
+    {
+        inkDialogueScript.RemoveChildren();
     }
 
     void SetAnimation()
     {
         // Implement animation logic if needed
     }
+
+   
 }
