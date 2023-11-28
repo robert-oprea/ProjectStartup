@@ -6,6 +6,9 @@ using UnityEngine.UI;
 // This is a super bare bones example of how to play and display a ink story in Unity.
 public class BasicInkExample : MonoBehaviour {
     public static event Action<Story> OnCreateStory;
+
+
+	//public static Action OnLastChoiceMade;
 	
     void Awake () {
 		// Remove the default message
@@ -40,23 +43,37 @@ public class BasicInkExample : MonoBehaviour {
 
 		// Display all the choices, if there are any!
 		if(story.currentChoices.Count > 0) {
+
 			for (int i = 0; i < story.currentChoices.Count; i++) {
+
 				Choice choice = story.currentChoices [i];
 				Button button = CreateChoiceView (choice.text.Trim ());
+
 				// Tell the button what to do when we press it
 				button.onClick.AddListener (delegate {
 					OnClickChoiceButton (choice);
+
+					/*if(!story.canContinue && i == story.currentChoices.Count - 1)
+                    {
+						if(OnLastChoiceMade != null)
+                        {
+							OnLastChoiceMade();
+                        }
+                    }*/
 				});
 			}
 		}
-		// If we've read all the content and there's no choices, the story is finished!
-		/*else {
-			Button choice = CreateChoiceView("End of story.\nRestart?");
-			choice.onClick.AddListener(delegate{
-				StartStory();
-			});
-		}*/
-	}
+        // If we've read all the content and there's no choices, the story is finished!
+        else
+        {
+            Button choice = CreateChoiceView("End of story.\nRestart?");
+            choice.onClick.AddListener(delegate
+            {
+				RemoveChildren();
+				cameraSwitcher.SwitchBackToMainCamera();
+            });
+        }
+    }
 
 	// When we click the choice button, tell the story to choose that choice!
 	void OnClickChoiceButton (Choice choice) {
@@ -108,4 +125,7 @@ public class BasicInkExample : MonoBehaviour {
 	private Text textPrefab = null;
 	[SerializeField]
 	private Button buttonPrefab = null;
+
+	[SerializeField]
+	private CameraSwitcher cameraSwitcher = null;
 }

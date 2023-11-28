@@ -23,10 +23,10 @@ public class CameraSwitcher : MonoBehaviour
     void Update()
     {
         // Example: Switch cameras when the Spacebar is pressed
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(SwitchCamerasSmoothCoroutine());
-        }
+        }*/
     }
 
     void SwitchCamerasInstant()
@@ -52,5 +52,25 @@ public class CameraSwitcher : MonoBehaviour
         otherCamera.enabled = true;
 
         _activeCamera = otherCamera;
+    }
+
+
+    public IEnumerator SwitchBackToMainCamera()
+    {
+        mainCamera.enabled = true;
+        otherCamera.enabled = false;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < switchDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        mainCamera.enabled = true;
+        otherCamera.enabled = false;
+
+        _activeCamera = mainCamera;
     }
 }

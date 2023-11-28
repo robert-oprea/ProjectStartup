@@ -17,7 +17,13 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] LayerMask clickableLayers;
 
+
     private bool canMove = true;
+
+    private void Start()
+    {
+       // BasicInkExample.OnLastChoiceMade += OnLastChoiceMadeHandler;
+    }
 
     void Awake()
     {
@@ -108,4 +114,6 @@ public class PlayerController : MonoBehaviour
     {
         // Implement animation logic if needed
     }
+
+   
 }
