@@ -70,7 +70,8 @@ public class BasicInkExample : MonoBehaviour {
             choice.onClick.AddListener(delegate
             {
 				RemoveChildren();
-				cameraSwitcher.SwitchBackToMainCamera();
+				StartCoroutine(cameraSwitcher.SwitchBackToMainCamera());
+				//Debug.Log("pressed");
             });
         }
     }
