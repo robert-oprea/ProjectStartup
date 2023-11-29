@@ -252,7 +252,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bd01a32831188e64d86c836663538379, type: 2}
+  - {fileID: 2100000, guid: 7834a5a9cb322d54eaeb90777405a1ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -297,6 +297,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &608832907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 608832908}
+  - component: {fileID: 608832909}
+  m_Layer: 0
+  m_Name: Fade check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &608832908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608832907}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8899294, y: 0.24948943, z: 0.1447618}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &608832909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608832907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d794aa0aeac87a04aa0cc4396005c136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneSwitch: {fileID: 920063075}
+  faded1: 0
+  faded2: 0
+  faded3: 0
 --- !u!1 &709296467
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +406,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fcadfe350fe7a54b8f302c375b7f74c, type: 2}
+  - {fileID: 2100000, guid: 422862fd8da64864eae04f12266a1143, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -415,7 +463,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f209ec17c36daee4aad6f345181eedad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destinationTag: 3
+  destinationTag: 1
+  sceneSwitch: {fileID: 920063075}
+  fadeCheck: {fileID: 608832909}
 --- !u!1 &778168135
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +527,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9fe93c89d658c5c4789e1d4955b3e9c4, type: 2}
+  - {fileID: 2100000, guid: 4afe56657dbd2914e807ecb52c6375f1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -535,6 +585,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationTag: 2
+  sceneSwitch: {fileID: 920063075}
+  fadeCheck: {fileID: 608832909}
+--- !u!1 &920063074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 920063076}
+  - component: {fileID: 920063075}
+  m_Layer: 0
+  m_Name: Scene loader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &920063075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920063074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6684ae181a849c4f9fbcd0d60e22e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &920063076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920063074}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.15227106, y: -0.18940532, z: 0.26524544}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &950855937
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +692,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1ea62125c4d843845ae2067c112a483c, type: 2}
+  - {fileID: 2100000, guid: 486ccde737ed8fd4e96e1269a8128b2e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -653,7 +749,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f209ec17c36daee4aad6f345181eedad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destinationTag: 1
+  destinationTag: 3
+  sceneSwitch: {fileID: 920063075}
+  fadeCheck: {fileID: 608832909}
 --- !u!1 &1033061842
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,7 +919,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3795ee7e574168045bceff11b7491451, type: 2}
+  - {fileID: 2100000, guid: e891a363e3b49314ca9a8635f7fe2a99, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -896,6 +994,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filename: MARA FOLDER/dictionary.csv
+  lines: []
+  words: []
+  lineNr: 0
 --- !u!4 &1212122929
 Transform:
   m_ObjectHideFlags: 0
@@ -1078,7 +1179,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e828e709e7f0a2a43a6da53304915a90, type: 2}
+  - {fileID: 2100000, guid: 0001d86a6c959a34f804034218556859, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1501,3 +1602,5 @@ SceneRoots:
   - {fileID: 709296471}
   - {fileID: 778168139}
   - {fileID: 1212122929}
+  - {fileID: 920063076}
+  - {fileID: 608832908}

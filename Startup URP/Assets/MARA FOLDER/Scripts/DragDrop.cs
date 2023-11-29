@@ -3,20 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DragDrop : MonoBehaviour
 {
 
     Vector3 offset;
 
+
     [SerializeField]
     public string destinationTag;
+
+    [SerializeField]
+    private SceneSwitch sceneSwitch = null;
+
+    [SerializeField]
+    public CheckIfFaded fadeCheck;
+
+    private string currentSceneName;
+
 
     Vector3 startingPos;
 
     private void Start()
     {
         startingPos = this.transform.position;
+
+        currentSceneName = SceneManager.GetActiveScene().name;
     }
 
     Vector3 MouseWorldPosition()
@@ -57,6 +70,23 @@ public class DragDrop : MonoBehaviour
 
         }
         Debug.Log("fadeout end");
+
+
+        if(fadeCheck.faded1 == false)
+        {
+            fadeCheck.faded1 = true;
+        }else if(fadeCheck.faded2 == false)
+        {
+            fadeCheck.faded2 = true;
+        }else if (fadeCheck.faded3 == false)
+        {
+            fadeCheck.faded3 = true;
+        }
+
+        //sceneSwitch.LoadLevel("3 MARA SCENE");
+
+
+
         Debug.Log("REMOVE");
         
         //Destroy();
@@ -89,6 +119,10 @@ public class DragDrop : MonoBehaviour
 
                 //StartFading(this.gameObject, hitInfo.);
                 StartFading(transform.GetComponent<Renderer>(), hitInfo.transform.GetComponent<Renderer>());
+
+                // Start fading and load the new scene when the fading is complete
+               // StartFading(transform.GetComponent<Renderer>(), hitInfo.transform.GetComponent<Renderer>(), LoadNewScene);
+
                 //Renderer rendWord = transform.GetComponent<Renderer>();
                 //Renderer rendImg = hitInfo.transform.GetComponent<Renderer>();
 
@@ -117,6 +151,5 @@ public class DragDrop : MonoBehaviour
         }
         transform.GetComponent<Collider>().enabled = true;
     }
-
 
 }

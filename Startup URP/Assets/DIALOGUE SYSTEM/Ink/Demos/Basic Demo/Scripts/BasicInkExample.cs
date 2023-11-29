@@ -15,6 +15,8 @@ public class BasicInkExample : MonoBehaviour {
 		RemoveChildren();
 		//StartStory();
 
+		//sceneSwitch = GetComponent<SceneSwitch>();
+
 	}
 
 	// Creates a new Story object with the compiled story which we can then play!
@@ -69,8 +71,11 @@ public class BasicInkExample : MonoBehaviour {
             Button choice = CreateChoiceView("End of story.\nRestart?");
             choice.onClick.AddListener(delegate
             {
+				sceneSwitch.LoadLevel("2 MARA SCENE");
 				RemoveChildren();
 				StartCoroutine(cameraSwitcher.SwitchBackToMainCamera());
+
+
 				//Debug.Log("pressed");
             });
         }
@@ -129,4 +134,7 @@ public class BasicInkExample : MonoBehaviour {
 
 	[SerializeField]
 	private CameraSwitcher cameraSwitcher = null;
+
+	[SerializeField]
+	private SceneSwitch sceneSwitch = null;
 }
