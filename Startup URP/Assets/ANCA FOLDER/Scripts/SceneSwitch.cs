@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class SceneSwitch : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class SceneSwitch : MonoBehaviour
 
         SceneManager.LoadScene(level);
 
+    }
+
+    public void LoadNextLevel()
+    {
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Debug.Log("Jogo to load: " + SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void LoadGame(string game)

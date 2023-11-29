@@ -27,7 +27,7 @@ public class CheckIfFaded : MonoBehaviour
     {
         if(faded1 && faded2 && faded3)
         {
-            sceneSwitch.LoadLevel("3 MARA SCENE");
+            sceneSwitch.LoadNextLevel();
 
         }
     }
