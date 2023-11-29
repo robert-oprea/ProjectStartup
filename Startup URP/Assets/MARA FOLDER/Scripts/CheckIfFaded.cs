@@ -25,7 +25,7 @@ public class CheckIfFaded : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(faded1 && faded2 )
+        if(faded1 && faded2 && faded3 )
         {
             sceneSwitch.LoadLevel("3 MARA SCENE");
 

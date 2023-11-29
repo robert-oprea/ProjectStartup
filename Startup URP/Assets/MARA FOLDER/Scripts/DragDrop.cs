@@ -71,7 +71,6 @@ public class DragDrop : MonoBehaviour
         }
         Debug.Log("fadeout end");
 
-        //onFadeComplete.Invoke();
 
         if(fadeCheck.faded1 == false)
         {
@@ -79,10 +78,10 @@ public class DragDrop : MonoBehaviour
         }else if(fadeCheck.faded2 == false)
         {
             fadeCheck.faded2 = true;
-        }else /*if (fadeCheck.faded3 == false)
+        }else if (fadeCheck.faded3 == false)
         {
-            fadeCheck.faded3 = false;
-        }*/
+            fadeCheck.faded3 = true;
+        }
 
         //sceneSwitch.LoadLevel("3 MARA SCENE");
 
