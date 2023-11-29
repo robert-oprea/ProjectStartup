@@ -15,7 +15,6 @@ public class ReadDictionary : MonoBehaviour
 
 
 
-    // Start is called before the first frame update
     void Start()
     {
         lines = File.ReadAllLines("Assets/" + filename);
@@ -37,39 +36,12 @@ public class ReadDictionary : MonoBehaviour
                 Debug.Log(allWords[lineNr][i]);
 
             }
-            //ask paul why words don t get assigned to this
+            
             Debug.Log(lineNr);
             lineNr++;
 
-
         }
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
-
-    /*
-     for (int i = 0; i <= words.Length; i++)
-        {
-            for (int j = 0; j <= lines.Length; j++)
-            {
-                string[,] allWords = new string[words.Length, lines.Length];
-                allWords[i, j] = lines[j];
-
-            }
-        }
-    for (int i = 0; i <= lineNr; i++)
-        {      
-            Debug.Log(allWords[i] + "\n");
-         
-        }
-    */
-
-
 
 }
