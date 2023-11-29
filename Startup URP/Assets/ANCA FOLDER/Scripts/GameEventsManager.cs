@@ -14,5 +14,6 @@ public class GameEventsManager : MonoBehaviour
         {
             Debug.LogError("more than one game instance"); 
         }
+        instance = this;
     }
 }
