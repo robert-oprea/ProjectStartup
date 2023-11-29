@@ -642,7 +642,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1ea62125c4d843845ae2067c112a483c, type: 2}
+  - {fileID: 2100000, guid: d49ce9e0823db2c4aa92597c27a533b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -943,6 +943,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filename: MARA FOLDER/dictionary.csv
+  lines: []
+  words: []
 --- !u!4 &1212122929
 Transform:
   m_ObjectHideFlags: 0
