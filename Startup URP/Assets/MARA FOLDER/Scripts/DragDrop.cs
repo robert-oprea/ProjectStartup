@@ -152,19 +152,4 @@ public class DragDrop : MonoBehaviour
         transform.GetComponent<Collider>().enabled = true;
     }
 
-    /*void LoadNewScene()
-    {
-        // Assuming you have a SceneSwitch script attached to the same GameObject
-        // Make sure to assign the SceneSwitch component in the Unity Editor
-        if (sceneSwitch != null)
-        {
-            sceneSwitch.LoadLevel("3 MARA SCENE");
-        }
-        else
-        {
-            Debug.LogError("sceneSwitch is not assigned!");
-        }
-    }*/
-
-
 }
