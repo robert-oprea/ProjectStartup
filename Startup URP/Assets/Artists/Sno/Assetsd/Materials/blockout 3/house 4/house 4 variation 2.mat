@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: house 4
+  m_Name: house 4 variation 2
   m_Shader: {fileID: -6465566751694194690, guid: b7d408fa35d8a9941b95701168f3feb0,
     type: 3}
   m_Parent: {fileID: 0}
@@ -53,7 +53,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 362c02987580aa8479415aad1ffa4f57, type: 3}
+        m_Texture: {fileID: 2800000, guid: dec673f9dfc4b0c44b3e03b3fd8df1d9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -125,7 +125,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &7750532250363147350
+--- !u!114 &7753179394987677558
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
