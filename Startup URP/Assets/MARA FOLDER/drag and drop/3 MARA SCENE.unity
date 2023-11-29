@@ -416,6 +416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationTag: 3
+  sceneSwitch: {fileID: 920063075}
 --- !u!1 &778168135
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationTag: 2
+  sceneSwitch: {fileID: 920063075}
 --- !u!1 &920063074
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationTag: 1
+  sceneSwitch: {fileID: 920063075}
 --- !u!1 &1033061842
 GameObject:
   m_ObjectHideFlags: 0

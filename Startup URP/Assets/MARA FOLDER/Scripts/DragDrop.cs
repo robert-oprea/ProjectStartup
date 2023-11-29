@@ -3,14 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEditor.SceneManagement;
 
 public class DragDrop : MonoBehaviour
 {
 
     Vector3 offset;
 
+
     [SerializeField]
     public string destinationTag;
+
+    [SerializeField]
+    private SceneSwitch sceneSwitch = null;
+
+
 
     Vector3 startingPos;
 
@@ -27,13 +34,13 @@ public class DragDrop : MonoBehaviour
     }
 
 
-    public void StartFading(Renderer rend1, Renderer rend2)
+    public void StartFading(Renderer rend1, Renderer rend2, Action onFadeComplete)
     {
-        StartCoroutine(FadeOut( rend1, rend2));
+        StartCoroutine(FadeOut( rend1, rend2, onFadeComplete));
     }
 
 
-    IEnumerator FadeOut(Renderer rend1, Renderer rend2)
+    IEnumerator FadeOut(Renderer rend1, Renderer rend2, Action onFadeComplete)
     {
 
 
@@ -57,6 +64,10 @@ public class DragDrop : MonoBehaviour
 
         }
         Debug.Log("fadeout end");
+
+        onFadeComplete.Invoke();
+
+
         Debug.Log("REMOVE");
         
         //Destroy();
@@ -88,7 +99,10 @@ public class DragDrop : MonoBehaviour
                 Debug.Log("right combo");
 
                 //StartFading(this.gameObject, hitInfo.);
-                StartFading(transform.GetComponent<Renderer>(), hitInfo.transform.GetComponent<Renderer>());
+                ///StartFading(transform.GetComponent<Renderer>(), hitInfo.transform.GetComponent<Renderer>());
+
+                // Start fading and load the new scene when the fading is complete
+                StartFading(transform.GetComponent<Renderer>(), hitInfo.transform.GetComponent<Renderer>(), LoadNewScene);
                 //Renderer rendWord = transform.GetComponent<Renderer>();
                 //Renderer rendImg = hitInfo.transform.GetComponent<Renderer>();
 
@@ -116,6 +130,20 @@ public class DragDrop : MonoBehaviour
             transform.position = startingPos;
         }
         transform.GetComponent<Collider>().enabled = true;
+    }
+
+    void LoadNewScene()
+    {
+        // Assuming you have a SceneSwitch script attached to the same GameObject
+        // Make sure to assign the SceneSwitch component in the Unity Editor
+        if (sceneSwitch != null)
+        {
+            sceneSwitch.LoadLevel("3 MARA SCENE");
+        }
+        else
+        {
+            Debug.LogError("sceneSwitch is not assigned!");
+        }
     }
 
 
