@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class DragDrop : MonoBehaviour
 {
@@ -17,6 +17,7 @@ public class DragDrop : MonoBehaviour
     [SerializeField]
     private SceneSwitch sceneSwitch = null;
 
+    private string currentSceneName;
 
 
     Vector3 startingPos;
@@ -24,6 +25,8 @@ public class DragDrop : MonoBehaviour
     private void Start()
     {
         startingPos = this.transform.position;
+
+        currentSceneName = SceneManager.GetActiveScene().name;
     }
 
     Vector3 MouseWorldPosition()
@@ -34,13 +37,13 @@ public class DragDrop : MonoBehaviour
     }
 
 
-    public void StartFading(Renderer rend1, Renderer rend2, Action onFadeComplete)
+    public void StartFading(Renderer rend1, Renderer rend2)
     {
-        StartCoroutine(FadeOut( rend1, rend2, onFadeComplete));
+        StartCoroutine(FadeOut( rend1, rend2));
     }
 
 
-    IEnumerator FadeOut(Renderer rend1, Renderer rend2, Action onFadeComplete)
+    IEnumerator FadeOut(Renderer rend1, Renderer rend2)
     {
 
 
@@ -65,7 +68,10 @@ public class DragDrop : MonoBehaviour
         }
         Debug.Log("fadeout end");
 
-        onFadeComplete.Invoke();
+        //onFadeComplete.Invoke();
+        
+
+        sceneSwitch.LoadLevel("3 MARA SCENE");
 
 
         Debug.Log("REMOVE");
@@ -99,10 +105,11 @@ public class DragDrop : MonoBehaviour
                 Debug.Log("right combo");
 
                 //StartFading(this.gameObject, hitInfo.);
-                ///StartFading(transform.GetComponent<Renderer>(), hitInfo.transform.GetComponent<Renderer>());
+                StartFading(transform.GetComponent<Renderer>(), hitInfo.transform.GetComponent<Renderer>());
 
                 // Start fading and load the new scene when the fading is complete
-                StartFading(transform.GetComponent<Renderer>(), hitInfo.transform.GetComponent<Renderer>(), LoadNewScene);
+               // StartFading(transform.GetComponent<Renderer>(), hitInfo.transform.GetComponent<Renderer>(), LoadNewScene);
+
                 //Renderer rendWord = transform.GetComponent<Renderer>();
                 //Renderer rendImg = hitInfo.transform.GetComponent<Renderer>();
 
@@ -132,7 +139,7 @@ public class DragDrop : MonoBehaviour
         transform.GetComponent<Collider>().enabled = true;
     }
 
-    void LoadNewScene()
+    /*void LoadNewScene()
     {
         // Assuming you have a SceneSwitch script attached to the same GameObject
         // Make sure to assign the SceneSwitch component in the Unity Editor
@@ -144,7 +151,7 @@ public class DragDrop : MonoBehaviour
         {
             Debug.LogError("sceneSwitch is not assigned!");
         }
-    }
+    }*/
 
 
 }
