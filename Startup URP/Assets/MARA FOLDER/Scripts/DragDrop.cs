@@ -17,6 +17,9 @@ public class DragDrop : MonoBehaviour
     [SerializeField]
     private SceneSwitch sceneSwitch = null;
 
+    [SerializeField]
+    public CheckIfFaded fadeCheck;
+
     private string currentSceneName;
 
 
@@ -69,9 +72,20 @@ public class DragDrop : MonoBehaviour
         Debug.Log("fadeout end");
 
         //onFadeComplete.Invoke();
-        
 
-        sceneSwitch.LoadLevel("3 MARA SCENE");
+        if(fadeCheck.faded1 == false)
+        {
+            fadeCheck.faded1 = true;
+        }else if(fadeCheck.faded2 == false)
+        {
+            fadeCheck.faded2 = true;
+        }else /*if (fadeCheck.faded3 == false)
+        {
+            fadeCheck.faded3 = false;
+        }*/
+
+        //sceneSwitch.LoadLevel("3 MARA SCENE");
+
 
 
         Debug.Log("REMOVE");

@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/ANCA FOLDER/ANCA SCENE.unity
     guid: 9175426e6803af24ebeae8ed5dbe1f69
   - enabled: 1
-    path: Assets/MARA FOLDER/drag and drop/2 MARA SCENE.unity
+    path: Assets/MARA FOLDER/2 MARA SCENE.unity
     guid: 38d390ebbd32bbb4785cb87e10ecbaa2
   - enabled: 1
-    path: Assets/MARA FOLDER/drag and drop/3 MARA SCENE.unity
+    path: Assets/MARA FOLDER/3 MARA SCENE.unity
     guid: 29bfc0127c351b14fb53f174cabbbb9c
   m_configObjects: {}
