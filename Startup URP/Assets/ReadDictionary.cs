@@ -9,17 +9,22 @@ public class ReadDictionary : MonoBehaviour
     public string[] lines;
     public string[] words;
 
-    public string[][] allWords = new string[10][];
+    public string[][] allWords;
     public int lineNr = 0;
 
-    
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        lines = File.ReadAllLines("Assets/"+filename);
-        
+        lines = File.ReadAllLines("Assets/" + filename);
+        allWords = new string[lines.Length][];
+
+        //instead of an array maybe use a list
+        //startwith an empty list and after each add 
+        //List<string[]> allWords List<List<string>>
+
 
         foreach (string line in lines)
         {
@@ -27,36 +32,17 @@ public class ReadDictionary : MonoBehaviour
 
             allWords[lineNr] = words;
 
-            Debug.Log(allWords[lineNr]);
-            //ask paul why words don t get assigned to this
+            for (var i = 0; i < words.Length; i++)
+            {
+                Debug.Log(allWords[lineNr][i]);
 
+            }
+            //ask paul why words don t get assigned to this
+            Debug.Log(lineNr);
             lineNr++;
 
 
-
-            /*for (int i = 0; i <= words.Length; i++)
-            {
-                for (int j = 0; j <= lines.Length; j++)
-                {
-                    string[,] allWords = new string[words.Length, lines.Length];
-                    allWords[i, j] = lines[j];
-
-                }
-            }*/
-
-
         }
-
-        /*for (int i = 0; i <= lineNr; i++)
-        {
-            
-                Debug.Log(allWords[i] + "\n");
-
-            
-        }*/
-        
-
-
 
     }
 
@@ -67,8 +53,22 @@ public class ReadDictionary : MonoBehaviour
 
     }
 
+    /*
+     for (int i = 0; i <= words.Length; i++)
+        {
+            for (int j = 0; j <= lines.Length; j++)
+            {
+                string[,] allWords = new string[words.Length, lines.Length];
+                allWords[i, j] = lines[j];
 
-
+            }
+        }
+    for (int i = 0; i <= lineNr; i++)
+        {      
+            Debug.Log(allWords[i] + "\n");
+         
+        }
+    */
 
 
 
