@@ -13,35 +13,48 @@ public class ReadDictionary : MonoBehaviour
     public int lineNr = 0;
 
 
-
-
     void Start()
     {
-        lines = File.ReadAllLines("Assets/" + filename);
-        allWords = new string[lines.Length][];
+        ReadAndStore();
 
-        //instead of an array maybe use a list
-        //startwith an empty list and after each add 
-        //List<string[]> allWords List<List<string>>
+    }
+
+
+    void ReadAndStore()
+    {
+        //get the file
+        lines = File.ReadAllLines("Assets/" + filename);
+        
+        allWords = new string[lines.Length][];
 
 
         foreach (string line in lines)
         {
-            words = line.Split(','); // Should work as long as there are no comma's in the Excel sheet  //Debug.Log(words[0] + " is the Spanish word for " + words[1]);
+            //split each row by the comma's
+            words = line.Split(','); // should work as long as there are no comma's in the Excel sheet  
 
+            //store each split row in a jagged array
             allWords[lineNr] = words;
 
-            for (var i = 0; i < words.Length; i++)
-            {
-                //Debug.Log(allWords[lineNr][i]);
-
-            }
-            
-            //Debug.Log(lineNr);
             lineNr++;
 
         }
-
     }
 
 }
+
+
+
+//instead of an array we can use a list
+//startwith an empty list and after each add 
+//List<string[]> allWords List<List<string>>
+
+//Debug.Log(words[0] + " is the Spanish word for " + words[1]);
+/*for (var i = 0; i < words.Length; i++)
+{
+    Debug.Log(allWords[lineNr][i]);
+
+}
+
+Debug.Log(lineNr);
+*/

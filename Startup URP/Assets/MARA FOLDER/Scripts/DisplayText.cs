@@ -12,18 +12,38 @@ public class DisplayText : MonoBehaviour
     [SerializeField]
     TextMeshPro[] wordSlots;
 
+    string[] pickedWords;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        wordManager= GetComponent<WordManager>();
+        wordManager = GetComponent<WordManager>();
 
         //Text = FindObjectOfType<TextMeshPro>();
-         //Text = GetComponent<TextMeshPro>();
+        //Text = GetComponent<TextMeshPro>();
 
+        pickedWords = wordManager.PickWords(3);
 
-        
-        
+        var s = 0;
+        var e = 0;
+
+        for (var i = 0; i < wordSlots.Length; i++)
+        {
+            if (wordSlots[i].text == "spanish")
+            {
+                wordSlots[i].text = pickedWords[s];
+                s++;
+            }
+            else if (wordSlots[i].text == "english")
+            {
+                wordSlots[i].text = wordManager.Translate(pickedWords[e]);
+                e++;
+
+            }
+
+        }
+
 
 
     }
@@ -31,18 +51,7 @@ public class DisplayText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (var i = 0; i < wordSlots.Length; i++)
-        {
-            if (wordSlots[i].text == "spanish")
-            {
-                wordSlots[i].text = wordManager.dictionary.allWords[i][0];
-            }else if (wordSlots[i].text == "english")
-            {
-                wordSlots[i].text = wordManager.dictionary.allWords[i][1];
 
-            }
-        }
-        
 
     }
 
