@@ -6,7 +6,7 @@ public class GameEventsManager : MonoBehaviour
 {
     public static GameEventsManager instance { get; private set; }
 
-    //public QuestEvents questEvents;
+    public QuestEvents questEvents;
 
     private void Awake()
     {
@@ -15,5 +15,7 @@ public class GameEventsManager : MonoBehaviour
             Debug.LogError("more than one game instance"); 
         }
         instance = this;
+
+        questEvents = new QuestEvents();
     }
 }
