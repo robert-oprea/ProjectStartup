@@ -9,7 +9,6 @@ public class NPCManager : MonoBehaviour
 
     private void Awake()
     {
-        // Singleton pattern to ensure only one instance of the NPCManager exists
         if (Instance == null)
         {
             Instance = this;
