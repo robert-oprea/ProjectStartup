@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/ANCA FOLDER/ANCA SCENE.unity
     guid: 9175426e6803af24ebeae8ed5dbe1f69
   - enabled: 1
@@ -19,7 +19,16 @@ EditorBuildSettings:
     guid: ff2d843fe35f2bb48be129a52c54dc9c
   - enabled: 1
     path: Assets/PROTOTYPE/two.unity
-    guid: b1a9606969055ab45950d0d1b810b043
+    guid: 2cef6a27623a64bbd9b43e248a1093bb
+  - enabled: 1
+    path: Assets/PROTOTYPE/three.unity
+    guid: a47eca10b3472471585d2ae7adbe326e
+  - enabled: 1
+    path: Assets/PROTOTYPE/four.unity
+    guid: 45b16225cc17e48bdb8a2cf9b5e0abc1
+  - enabled: 1
+    path: Assets/PROTOTYPE/tutorial.unity
+    guid: a9829d44591f5ea4287bc53062fe91c5
   - enabled: 0
     path: Assets/MARA FOLDER/3 MARA SCENE.unity
     guid: 29bfc0127c351b14fb53f174cabbbb9c
