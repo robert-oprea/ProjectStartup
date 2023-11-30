@@ -33,11 +33,11 @@ public class ReadDictionary : MonoBehaviour
 
             for (var i = 0; i < words.Length; i++)
             {
-                Debug.Log(allWords[lineNr][i]);
+                //Debug.Log(allWords[lineNr][i]);
 
             }
             
-            Debug.Log(lineNr);
+            //Debug.Log(lineNr);
             lineNr++;
 
         }
