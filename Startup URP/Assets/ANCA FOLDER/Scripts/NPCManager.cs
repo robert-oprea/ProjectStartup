@@ -28,4 +28,5 @@ public class NPCManager : MonoBehaviour
     {
         npcList.Remove(npc);
     }
+
 }

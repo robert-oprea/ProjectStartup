@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
+    
     private BasicInkExample inkDialogueScript; // Reference to the Ink dialogue script
 
     public KeyCode interactKey = KeyCode.E;
@@ -22,7 +22,11 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-       // BasicInkExample.OnLastChoiceMade += OnLastChoiceMadeHandler;
+        inkDialogueScript = FindObjectOfType<BasicInkExample>();
+        if (inkDialogueScript == null)
+        {
+            Debug.LogError("BasicInkExample script not found in the scene!");
+        }
     }
 
     void Awake()
@@ -82,8 +86,12 @@ public class PlayerController : MonoBehaviour
 
             if (npc != null && Input.GetKeyDown(interactKey))
             {
+                Debug.Log("Interacted with NPC: " + npc.npcName);
                 canMove = false;
                 StartCoroutine(cameraSwitcher.SwitchCamerasSmoothCoroutine());
+
+                // Set the story associated with the NPC
+                inkDialogueScript.SetStoryJSON(npc.inkJSONAsset);
 
                 TeleportPlayerToNPC(npc);
 
@@ -93,6 +101,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     private void OnCollisionExit(Collision collision)
     {
         //EndDialogue();
@@ -101,13 +110,26 @@ public class PlayerController : MonoBehaviour
 
     private void StartDialogue()
     {
-        // Trigger the dialogue or any other actions you want when interacting with the NPC
-        inkDialogueScript.StartStory();
+        if (inkDialogueScript != null)
+        {
+            inkDialogueScript.StartStory();
+        }
+        else
+        {
+            Debug.LogError("inkDialogueScript is not assigned!");
+        }
     }
 
     private void EndDialogue()
     {
-        inkDialogueScript.RemoveChildren();
+        if (inkDialogueScript != null)
+        {
+            inkDialogueScript.RemoveChildren();
+        }
+        else
+        {
+            Debug.LogError("inkDialogueScript is not assigned!");
+        }
     }
 
     void SetAnimation()

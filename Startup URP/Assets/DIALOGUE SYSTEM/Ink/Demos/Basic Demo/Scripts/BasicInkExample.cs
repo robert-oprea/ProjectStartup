@@ -5,27 +5,53 @@ using UnityEngine.UI;
 
 // This is a super bare bones example of how to play and display a ink story in Unity.
 public class BasicInkExample : MonoBehaviour {
+
     public static event Action<Story> OnCreateStory;
 
-
-	//public static Action OnLastChoiceMade;
+	[SerializeField]
+	private TextAsset inkJSONAsset = null;
+	private Story story;
 	
-    void Awake () {
+
+	void Awake()
+	{
 		// Remove the default message
 		RemoveChildren();
-		//StartStory();
-
-		//sceneSwitch = GetComponent<SceneSwitch>();
-
 	}
 
 	// Creates a new Story object with the compiled story which we can then play!
-	public void StartStory () {
-		story = new Story (inkJSONAsset.text);
-        if(OnCreateStory != null) OnCreateStory(story);
+	public void StartStory()
+	{
+		// Instead of creating a new Story with a fixed JSONAsset, use the assigned JSON file
+		if (inkJSONAsset != null)
+		{
+			story = new Story(inkJSONAsset.text);
+		}
+		else
+		{
+			Debug.LogError("No JSON file assigned to the NPC!");
+			return;
+		}
+
+		// Trigger the event to inform other scripts about the new story
+		if (OnCreateStory != null)
+		{
+			OnCreateStory(story);
+		}
+
 		RefreshView();
 	}
-	
+
+	public Story GetStory()
+    {
+		return story;
+    }
+
+	public void SetStoryJSON(TextAsset jsonAsset)
+    {
+		inkJSONAsset = jsonAsset;
+    }
+
 	// This is the main function called every time the story changes. It does a few things:
 	// Destroys all the old content and choices.
 	// Continues over all the lines of text, then displays all the choices. If there are no choices, the story is finished!
@@ -71,9 +97,9 @@ public class BasicInkExample : MonoBehaviour {
             Button choice = CreateChoiceView("End of story.\nRestart?");
             choice.onClick.AddListener(delegate
             {
-				sceneSwitch.LoadLevel("2 MARA SCENE");
-				RemoveChildren();
-				StartCoroutine(cameraSwitcher.SwitchBackToMainCamera());
+                //sceneSwitch.LoadLevel("2 MARA SCENE");
+                RemoveChildren();
+                StartCoroutine(cameraSwitcher.SwitchBackToMainCamera());
 
 
 				//Debug.Log("pressed");
@@ -119,9 +145,9 @@ public class BasicInkExample : MonoBehaviour {
 		}
 	}
 
-	[SerializeField]
+	/*[SerializeField]
 	private TextAsset inkJSONAsset = null;
-	public Story story;
+	public Story story;*/
 
 	[SerializeField]
 	private Canvas canvas = null;
@@ -135,6 +161,6 @@ public class BasicInkExample : MonoBehaviour {
 	[SerializeField]
 	private CameraSwitcher cameraSwitcher = null;
 
-	[SerializeField]
-	private SceneSwitch sceneSwitch = null;
+	/*[SerializeField]
+	private SceneSwitch sceneSwitch = null;*/
 }

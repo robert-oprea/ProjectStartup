@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class NPCInteraction : MonoBehaviour
 {
-    [SerializeField]
-    private BasicInkExample inkDialogueScript; // Reference to the Ink dialogue script
+    //[SerializeField]
+    //private BasicInkExample inkDialogueScript; // Reference to the Ink dialogue script
     public KeyCode interactionKey = KeyCode.E;
 
  
@@ -19,14 +19,14 @@ public class NPCInteraction : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        inkDialogueScript.RemoveChildren();
-    }
-
     private void StartDialogue()
     {
         // Trigger the dialogue or any other actions you want when interacting with the NPC
-        inkDialogueScript.StartStory();
+        // Instead of calling a single Ink story, get the story associated with this NPC
+        BasicInkExample inkDialogueScript = GetComponent<BasicInkExample>();
+        if (inkDialogueScript != null)
+        {
+            inkDialogueScript.StartStory();
+        }
     }
 }
