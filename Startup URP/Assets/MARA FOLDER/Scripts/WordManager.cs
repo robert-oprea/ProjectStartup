@@ -26,11 +26,7 @@ public class WordManager : MonoBehaviour
         // DEBUGS
 
         /*Text.text = dictionary.allWords[random][0];
-        */
-
-
-
-        /*
+        
          
         var pickedWords = PickWords(4);
 
@@ -38,11 +34,11 @@ public class WordManager : MonoBehaviour
         {
             Debug.Log(pickedWords[i]);
 
-        }*/
+        }
 
         var random = Random.Range(0, dictionary.lineNr);
         Debug.Log(dictionary.allWords[random][0] + " means " + Translate(dictionary.allWords[random][0]));
-
+        */
     }
 
 

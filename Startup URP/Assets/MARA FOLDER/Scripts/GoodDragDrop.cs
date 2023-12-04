@@ -13,11 +13,15 @@ public class GoodDragDrop : MonoBehaviour
     [SerializeField]
     WordManager wordManager;
 
+    FadeAndDestroy fadeDestroy;
+
 
     private void Start()
     {
 
         startingPos = this.transform.position;
+        fadeDestroy= GetComponent<FadeAndDestroy>();
+
     }
 
 
@@ -63,6 +67,7 @@ public class GoodDragDrop : MonoBehaviour
             {
                 transform.position = hitInfo.transform.position;
                 Debug.Log("right combo");
+                fadeDestroy.StartCoroutine(fadeDestroy.FadeTo(fadeDestroy.alphaValue, fadeDestroy.fadeDelay, hitInfo.transform.gameObject));
 
             }
             else
