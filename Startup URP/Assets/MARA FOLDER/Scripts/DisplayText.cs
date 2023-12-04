@@ -4,6 +4,7 @@ using UnityEngine;
 
 using TMPro;
 using System;
+using Unity.Mathematics;
 
 public class DisplayText : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class DisplayText : MonoBehaviour
 
     string[] translatedWords;
 
+    string pickedTopic;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,11 +29,44 @@ public class DisplayText : MonoBehaviour
         //Text = FindObjectOfType<TextMeshPro>();
         //Text = GetComponent<TextMeshPro>();
 
-        pickedWords = wordManager.PickWords(3);
+        /*if (tag == "DROP")
+        {
+            DragDropDisplay();
+        }*/
+
+        switch (tag)
+        {
+            case "DROP":
+                DragDropDisplay();
+                break;
+            
+            case "FLOWER":
+                FlowerDisplay();
+                break;
+        }
+
+
+
+
+       
+
+    }
+
+
+    void FlowerDisplay()
+    {
+        pickedTopic = wordManager.dictionary.allWords[UnityEngine.Random.Range(0, wordManager.dictionary.lineNr)][0];
+
+        
+    }
+
+    void DragDropDisplay()
+    {
+        pickedWords = wordManager.PickWords(4);
 
         translatedWords = new string[pickedWords.Length];
 
-        for(var i = 0; i < pickedWords.Length; i++)
+        for (var i = 0; i < pickedWords.Length; i++)
         {
             translatedWords[i] = wordManager.Translate(pickedWords[i]);
         }
@@ -41,9 +77,6 @@ public class DisplayText : MonoBehaviour
         {
             Debug.Log(translatedWords[i]);
         }
-
-
-
 
         var s = 0;
         var e = 0;

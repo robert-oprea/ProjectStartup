@@ -60,6 +60,24 @@ public class WordManager : MonoBehaviour
         return pickedWords;
     }
 
+    public string[] PickedTopicWords(string topic)
+    {
+        string[] pickedWords = new string[12];
+
+        var v = 0;
+        for (var i = 0; i < dictionary.lineNr; i++)
+        {
+            if (dictionary.allWords[i][2] == topic)
+            {
+                pickedWords[v] = dictionary.allWords[i][1];
+                v++;
+
+            }
+        }
+
+        return pickedWords;
+    }
+
 
     public bool NotAlreadyPicked(string wordToCheck, string[] stringToCheck)
     {
@@ -77,7 +95,7 @@ public class WordManager : MonoBehaviour
     }
 
     
-    string meaning;     //??
+    string meaning = null;     //??
     public string Translate(string word)
     {
         //gets the word and looks for it in the database
@@ -88,6 +106,7 @@ public class WordManager : MonoBehaviour
             if (dictionary.allWords[i][0] == word)
             {
                 meaning = dictionary.allWords[i][1];
+  
             }
         }
         return meaning;

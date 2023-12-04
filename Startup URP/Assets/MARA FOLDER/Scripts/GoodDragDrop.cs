@@ -69,6 +69,8 @@ public class GoodDragDrop : MonoBehaviour
                 Debug.Log("right combo");
                 fadeDestroy.StartCoroutine(fadeDestroy.FadeTo(fadeDestroy.alphaValue, fadeDestroy.fadeDelay, hitInfo.transform.gameObject));
 
+
+
             }
             else
             {
