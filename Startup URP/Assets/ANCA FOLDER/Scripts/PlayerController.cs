@@ -104,12 +104,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    /*private void OnCollisionExit(Collision collision)
+    private void OnCollisionExit(Collision collision)
     {
         //EndDialogue();
         canMove = true;
-    }*/
-    
+    }
+
     //calls for the startstory method in the ink script
     private void StartDialogue()
     {

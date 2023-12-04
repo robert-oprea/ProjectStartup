@@ -109,9 +109,11 @@ public class BasicInkExample : MonoBehaviour {
 
 	// When we click the choice button, tell the story to choose that choice!
 	void OnClickChoiceButton (Choice choice) {
+
 		story.ChooseChoiceIndex (choice.index);
 		RefreshView();
 	}
+
 
 	// Creates a textbox showing the the line of text
 	void CreateContentView (string text) {
