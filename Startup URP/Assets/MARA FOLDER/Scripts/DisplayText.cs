@@ -46,10 +46,6 @@ public class DisplayText : MonoBehaviour
         }
 
 
-
-
-       
-
     }
 
 
@@ -57,7 +53,13 @@ public class DisplayText : MonoBehaviour
     {
         pickedTopic = wordManager.dictionary.allWords[UnityEngine.Random.Range(0, wordManager.dictionary.lineNr)][0];
 
-        
+        string[] pickedWords = wordManager.PickedTopicWords(pickedTopic);
+
+       var random = UnityEngine.Random.Range(0, 7);
+
+        //pick a random one of the text thingies and write impostor in that then fill them out using what i used for the other display and check for impostor, spanish and topic
+
+
     }
 
     void DragDropDisplay()
@@ -71,7 +73,7 @@ public class DisplayText : MonoBehaviour
             translatedWords[i] = wordManager.Translate(pickedWords[i]);
         }
 
-        translatedWords = RandomizeArray(translatedWords);
+        translatedWords = wordManager.RandomizeArray(translatedWords);
 
         for (var i = 0; i < translatedWords.Length; i++)
         {
@@ -99,20 +101,7 @@ public class DisplayText : MonoBehaviour
 
     }
 
-    public string[] RandomizeArray(string[] arrayToRandomize)
-    {
-        System.Random random = new System.Random();
-        int n = arrayToRandomize.Length;
-        while (n > 1)
-        {
-            n--;
-            int k = random.Next(n + 1);
-            string temp = arrayToRandomize[k];
-            arrayToRandomize[k] = arrayToRandomize[n];
-            arrayToRandomize[n] = temp;
-        }
-        return arrayToRandomize;
-    }
+    
 
 
 }
