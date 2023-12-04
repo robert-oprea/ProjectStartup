@@ -4,28 +4,29 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     
-    private BasicInkExample inkDialogueScript; // Reference to the Ink dialogue script
+    private BasicInkExample inkDialogueScript; //reference to the ink dialogue script
 
     public KeyCode interactKey = KeyCode.E;
 
-    NavMeshAgent agent;
+    NavMeshAgent agent; //agent component for the nav mesh
     Animator animator;
     Rigidbody rb;
 
-    public CameraSwitcher cameraSwitcher; // Reference to the CameraSwitcher script
+    public CameraSwitcher cameraSwitcher; //reference to the camer switcher script
 
     [Header("Movement")]
-    [SerializeField] LayerMask clickableLayers;
+    [SerializeField] LayerMask clickableLayers; //object layer for player to know if they can click on an object or not
 
 
     private bool canMove = true;
 
+    //finding ink dialogue script to reference
     private void Start()
     {
         inkDialogueScript = FindObjectOfType<BasicInkExample>();
         if (inkDialogueScript == null)
         {
-            Debug.LogError("BasicInkExample script not found in the scene!");
+            Debug.LogError("BasicInkExample script not found in the scene");
         }
     }
 
@@ -38,10 +39,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Check for left mouse button click
+        //checking for left mouse button click
         if (canMove && Input.GetMouseButtonDown(0))
         {
-            // Check if the pointer is over a UI element using raycasting
+            //checking if the pointer is over a UI element using raycasting
             MoveToMouseClick();
         }
     }
@@ -50,32 +51,33 @@ public class PlayerController : MonoBehaviour
     {
         if (cameraSwitcher.ActiveCamera != null)
         {
-            // Check if the second camera is active
+            //checking if second camera is active
             if (cameraSwitcher.ActiveCamera == cameraSwitcher.otherCamera)
             {
-                // Player is not allowed to move when the second camera is active
-                return;
+                return; //player is not allowed to move when second camera is active
             }
 
             RaycastHit hit;
-            Ray ray = cameraSwitcher.ActiveCamera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = cameraSwitcher.ActiveCamera.ScreenPointToRay(Input.mousePosition); //raycasting to where the mouse click was on screen
 
-            if (Physics.Raycast(ray, out hit, 100, clickableLayers))
+            if (Physics.Raycast(ray, out hit, 100, clickableLayers)) //if the player clicked on the layer we want it to walk on
             {
                 if (hit.collider != null)
                 {
-                    agent.destination = hit.point;
+                    agent.destination = hit.point; //player destination is towards the mouse click
                 }
             }
         }
     }
 
+    //teleporting the player to the empty object child of the npc
     private void TeleportPlayerToNPC(NPCController npc)
     {
         transform.position = npc.emptyChildTransform.position;
-        agent.ResetPath();
+        agent.ResetPath(); //resets the path so the player doesnt bump into the object
     }
 
+    //npc logic when player collides with it
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("NPC"))
@@ -84,30 +86,31 @@ public class PlayerController : MonoBehaviour
 
             NPCController npc = collision.gameObject.GetComponent<NPCController>();
 
-            if (npc != null && Input.GetKeyDown(interactKey))
+            if (npc != null && Input.GetKeyDown(interactKey)) //when the player collides with an  npc and they press the interaction key
             {
                 Debug.Log("Interacted with NPC: " + npc.npcName);
-                canMove = false;
-                StartCoroutine(cameraSwitcher.SwitchCamerasSmoothCoroutine());
+                canMove = false; //player cannot move towards new mouse click
+                StartCoroutine(cameraSwitcher.SwitchToDialogueCamera()); //switching to the second "dialogue" camera
 
-                // Set the story associated with the NPC
+                //setting the story associated with the npc
                 inkDialogueScript.SetStoryJSON(npc.inkJSONAsset);
 
                 TeleportPlayerToNPC(npc);
 
-                StartDialogue();
+                StartDialogue(); //starts the dialogue scene
                 Debug.Log("test test");
             }
         }
     }
 
 
-    private void OnCollisionExit(Collision collision)
+    /*private void OnCollisionExit(Collision collision)
     {
         //EndDialogue();
         canMove = true;
-    }
-
+    }*/
+    
+    //calls for the startstory method in the ink script
     private void StartDialogue()
     {
         if (inkDialogueScript != null)
@@ -116,11 +119,11 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("inkDialogueScript is not assigned!");
+            Debug.LogError("inkDialogueScript is not assigned");
         }
     }
 
-    private void EndDialogue()
+   /* private void EndDialogue()
     {
         if (inkDialogueScript != null)
         {
@@ -128,13 +131,13 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("inkDialogueScript is not assigned!");
+            Debug.LogError("inkDialogueScript is not assigned");
         }
-    }
+    }*/
 
     void SetAnimation()
     {
-        // Implement animation logic if needed
+        //for future player animation
     }
 
    

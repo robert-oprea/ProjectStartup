@@ -1,3 +1,4 @@
+//states that the quests can have
 public enum QuestState
 {
     NotStarted = 0,

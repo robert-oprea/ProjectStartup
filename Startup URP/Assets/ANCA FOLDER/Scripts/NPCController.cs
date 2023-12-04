@@ -4,20 +4,20 @@ public class NPCController : MonoBehaviour
 {
     [Header("NPC Information")]
     public string npcName;
-    public TextAsset inkJSONAsset; // Assign the JSON file for each NPC in the Unity Editor
+    public TextAsset inkJSONAsset; //assign a json file to each npc in the editor
     public Transform emptyChildTransform;
 
     private BasicInkExample inkDialogueScript;
 
     private void Start()
     {
-        // Register the NPC with the NPCManager when it starts
+        //register the npc with the npc manager when it starts
         NPCManager.Instance.RegisterNPC(this);
 
-        // Get the InkDialogue script attached to this NPC
+        //getting the ink dialogue script attached to this npc
         inkDialogueScript = GetComponent<BasicInkExample>();
 
-        // Set the NPC-specific JSON file for the InkDialogue script
+        //setting the npc-specific json file for the ink dialogue script
         if (inkDialogueScript != null && inkJSONAsset != null)
         {
             inkDialogueScript.SetStoryJSON(inkJSONAsset);

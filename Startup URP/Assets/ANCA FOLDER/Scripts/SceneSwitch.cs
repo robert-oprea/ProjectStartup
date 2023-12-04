@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//manages different scene switching in the game
 public class SceneSwitch : MonoBehaviour
 {
     public void LoadLevel(string level)
     {
 
-        Debug.Log("Jogo to load: " + level);
+        Debug.Log("Loaded level: " + level);
 
         SceneManager.LoadScene(level);
 
@@ -17,7 +18,7 @@ public class SceneSwitch : MonoBehaviour
     public void LoadGame(string game)
     {
 
-        Debug.Log("Jogo to load: " + game);
+        Debug.Log("Loaded game: " + game);
         SceneManager.LoadScene(game);
 
     }
@@ -25,7 +26,7 @@ public class SceneSwitch : MonoBehaviour
     public void LoadMenu(string menu)
     {
 
-        Debug.Log("Jogo to load: " + menu);
+        Debug.Log("Loaded menu: " + menu);
         SceneManager.LoadScene(menu);
 
     }
@@ -33,7 +34,7 @@ public class SceneSwitch : MonoBehaviour
     public void LoadReward(string reward)
     {
 
-        Debug.Log("Jogo to load: " + reward);
+        Debug.Log("Loaded reward: " + reward);
         SceneManager.LoadScene(reward);
 
     }

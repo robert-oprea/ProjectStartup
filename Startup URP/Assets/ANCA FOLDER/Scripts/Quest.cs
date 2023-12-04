@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 
+//objective within a quest
 [Serializable]
 public class Objective
 {
@@ -18,10 +19,12 @@ public class Quest
 {
     public string questName;
     public string description;
-    public List<Objective> objectives;
-    public QuestState state;
-    public List<QuestRequirement> requirements;
+    public List<Objective> objectives; //list of objectives within a quest
+    public QuestState state; //the state of the quest
+    public List<QuestRequirement> requirements; //list of requirements before activating the quest
 
+
+    //start the quest if it hasnt already started and all requirements are met
     public void StartQuest()
     {
         if (state == QuestState.NotStarted && CheckQuestRequirements())
@@ -30,50 +33,52 @@ public class Quest
         }
     }
 
+    //completes an objective
     public void CompleteObjective(Objective objective)
     {
         if(objectives.Contains(objective) && !objective.isCompleted)
         {
             objective.isCompleted = true;
-            if (CheckAllObjectivesCompleted())
+            if (CheckAllObjectivesCompleted()) //checking if all objectives in the quest are completed
             {
-                FinishQuest();
+                FinishQuest(); //quest is completed
             }
         }
     }
 
+    //quest state complete
     public void FinishQuest()
     {
         state = QuestState.Completed;
     }
 
+    //quest state failed - for level system
     public void FailQuest()
     {
         state = QuestState.Failed;
     }
 
+    //checking if all quest objectives have been completed
     public bool CheckAllObjectivesCompleted()
     {
         return objectives.All(obj => obj.isCompleted);
     }
 
+    //checking if all quest requirements are met
     private bool CheckQuestRequirements()
     {
-        // Check if all quest requirements are met
         return requirements.All(req => req.IsMet());
     }
 }
 
-
 [Serializable]
 public class QuestRequirement
 {
-    // Implement specific requirements for starting a quest
-    // For example, player level, completed quests, etc.
+    //for future level system
 
     public bool IsMet()
     {
-        // Check if the requirement is met
+        //checking if a requirement is met
         return true;
     }
 }
