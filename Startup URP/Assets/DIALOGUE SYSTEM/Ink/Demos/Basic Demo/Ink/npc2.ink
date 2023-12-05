@@ -1,5 +1,5 @@
 bla bla story number 2 
-    * first choice 
-    * second choice 
+    * [first choice #startQuest:NPC2Test]
+    * [second choice #startMinigame:Test]
 -> END
     

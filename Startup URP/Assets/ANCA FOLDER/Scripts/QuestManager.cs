@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    // TODO: DontDestroyOnLoad / scene singleton
+
+    // set this in inspector
+    public Quest[] allQuests;
+
     //lists of quests in different states
     public List<Quest> activeQuests;
     public List<Quest> completedQuests;
@@ -11,11 +16,26 @@ public class QuestManager : MonoBehaviour
     //adding quests to the active quests list if they havent started before
     public void StartQuest(Quest quest)
     {
+        Debug.Log("Starting quest: " + quest.questName);
         if (!activeQuests.Contains(quest) && !completedQuests.Contains(quest) && !failedQuests.Contains(quest))
         {
             quest.StartQuest();
             activeQuests.Add(quest);
         }
+    }
+
+    // This is called whenever a quest tag is found?
+    public void CheckStartQuest(string questName)
+    {
+        foreach(Quest quest in allQuests)
+        {
+            if(quest.questName == questName)
+            {
+                StartQuest(quest);
+                return;
+            }
+        }
+        Debug.Log("WARNING: Quest not found: " + questName);
     }
 
     //updating the progress of each quest based on their objectives
