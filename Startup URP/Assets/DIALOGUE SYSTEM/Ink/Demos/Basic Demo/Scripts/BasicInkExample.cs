@@ -7,8 +7,6 @@ using UnityEngine.UI;
 public class BasicInkExample : MonoBehaviour {
 
     public static event Action<Story> OnCreateStory;
-
-	[SerializeField]
 	private TextAsset inkJSONAsset = null;
 	private Story story;
 	
@@ -121,6 +119,7 @@ public class BasicInkExample : MonoBehaviour {
 				{
 					case "startQuest":
 						var qm = FindObjectOfType<QuestManager>();
+						//Debug.Log("started quest idkkk");
 						if (qm != null)
 						{
 							qm.StartQuest(value);
