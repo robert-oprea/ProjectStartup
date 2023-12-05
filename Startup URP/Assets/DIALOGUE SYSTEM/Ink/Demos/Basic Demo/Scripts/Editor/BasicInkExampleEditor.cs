@@ -20,7 +20,7 @@ public class BasicInkExampleEditor : Editor {
 		Repaint();
 		base.OnInspectorGUI ();
 		var realTarget = target as BasicInkExample;
-		var story = realTarget.story;
+		var story = realTarget.GetStory();
 		InkPlayerWindow.DrawStoryPropertyField(story, ref storyExpanded, new GUIContent("Story"));
 	}
 }

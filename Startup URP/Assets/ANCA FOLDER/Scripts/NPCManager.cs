@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class NPCManager : MonoBehaviour
 {
-    public static NPCManager Instance;
+    public static NPCManager Instance; //creating an instance of the npc manager
 
-    public List<NPCController> npcList = new List<NPCController>();
+    public List<NPCController> npcList = new List<NPCController>(); //list where we store all npcs
 
+    //assigning instance to the manager
     private void Awake()
     {
-        // Singleton pattern to ensure only one instance of the NPCManager exists
         if (Instance == null)
         {
             Instance = this;
@@ -20,13 +20,16 @@ public class NPCManager : MonoBehaviour
         }
     }
 
+    //adding npc from the list
     public void RegisterNPC(NPCController npc)
     {
         npcList.Add(npc);
     }
 
+    //removing npc from the list
     public void UnregisterNPC(NPCController npc)
     {
         npcList.Remove(npc);
     }
+
 }

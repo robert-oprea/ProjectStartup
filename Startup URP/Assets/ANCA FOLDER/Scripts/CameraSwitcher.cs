@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class CameraSwitcher : MonoBehaviour
 {
-    public Camera mainCamera;
-    public Camera otherCamera;
-    public float switchDuration = 1.0f;
+    public Camera mainCamera; //the main camera
+    public Camera otherCamera; //the dialogue camera
+    public float switchDuration = 1.0f; 
 
     private Camera _activeCamera;
 
+    //returning current active camera
     public Camera ActiveCamera
     {
         get { return _activeCamera; }
@@ -16,26 +17,19 @@ public class CameraSwitcher : MonoBehaviour
 
     void Start()
     {
-        _activeCamera = mainCamera;
+        _activeCamera = mainCamera; //main camera is our default active camera
         SwitchCamerasInstant();
     }
 
-    void Update()
-    {
-        // Example: Switch cameras when the Spacebar is pressed
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(SwitchCamerasSmoothCoroutine());
-        }*/
-    }
-
+    //bools for detecting which camera should be enabled or disabled
     void SwitchCamerasInstant()
     {
         mainCamera.enabled = (_activeCamera == mainCamera);
         otherCamera.enabled = (_activeCamera == otherCamera);
     }
 
-    public IEnumerator SwitchCamerasSmoothCoroutine()
+    //switching to dialogue camera 
+    public IEnumerator SwitchToDialogueCamera()
     {
         mainCamera.enabled = false;
         otherCamera.enabled = true;
@@ -54,7 +48,7 @@ public class CameraSwitcher : MonoBehaviour
         _activeCamera = otherCamera;
     }
 
-
+    //switching back to main camera 
     public IEnumerator SwitchBackToMainCamera()
     {
         mainCamera.enabled = true;

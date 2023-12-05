@@ -13,63 +13,48 @@ public class ReadDictionary : MonoBehaviour
     public int lineNr = 0;
 
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        lines = File.ReadAllLines("Assets/" + filename);
-        allWords = new string[lines.Length][];
+        ReadAndStore();
 
-        //instead of an array maybe use a list
-        //startwith an empty list and after each add 
-        //List<string[]> allWords List<List<string>>
+    }
+
+
+    void ReadAndStore()
+    {
+        //get the file
+        lines = File.ReadAllLines("Assets/" + filename);
+        
+        allWords = new string[lines.Length][];
 
 
         foreach (string line in lines)
         {
-            words = line.Split(','); // Should work as long as there are no comma's in the Excel sheet  //Debug.Log(words[0] + " is the Spanish word for " + words[1]);
+            //split each row by the comma's
+            words = line.Split(','); // should work as long as there are no comma's in the Excel sheet  
 
+            //store each split row in a jagged array
             allWords[lineNr] = words;
 
-            for (var i = 0; i < words.Length; i++)
-            {
-                Debug.Log(allWords[lineNr][i]);
-
-            }
-            //ask paul why words don t get assigned to this
-            Debug.Log(lineNr);
             lineNr++;
 
-
         }
-
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
-
-    /*
-     for (int i = 0; i <= words.Length; i++)
-        {
-            for (int j = 0; j <= lines.Length; j++)
-            {
-                string[,] allWords = new string[words.Length, lines.Length];
-                allWords[i, j] = lines[j];
-
-            }
-        }
-    for (int i = 0; i <= lineNr; i++)
-        {      
-            Debug.Log(allWords[i] + "\n");
-         
-        }
-    */
-
-
 
 }
+
+
+
+//instead of an array we can use a list
+//startwith an empty list and after each add 
+//List<string[]> allWords List<List<string>>
+
+//Debug.Log(words[0] + " is the Spanish word for " + words[1]);
+/*for (var i = 0; i < words.Length; i++)
+{
+    Debug.Log(allWords[lineNr][i]);
+
+}
+
+Debug.Log(lineNr);
+*/
