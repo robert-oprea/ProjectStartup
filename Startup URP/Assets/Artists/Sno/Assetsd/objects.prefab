@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5829347114380246643}
   m_Layer: 0
-  m_Name: ==blockout 3==
+  m_Name: objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
