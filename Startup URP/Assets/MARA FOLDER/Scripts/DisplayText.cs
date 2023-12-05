@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using System;
 using Unity.Mathematics;
+using UnityEngine.SceneManagement;
 
 public class DisplayText : MonoBehaviour
 {
@@ -20,11 +21,13 @@ public class DisplayText : MonoBehaviour
 
     string pickedTopic;
 
+    FadeAndDestroy fadeDestroy;
 
     // Start is called before the first frame update
     void Start()
     {
         wordManager = GetComponent<WordManager>();
+
 
         //Text = FindObjectOfType<TextMeshPro>();
         //Text = GetComponent<TextMeshPro>();
@@ -39,12 +42,61 @@ public class DisplayText : MonoBehaviour
             case "DROP":
                 DragDropDisplay();
                 break;
-            
+
             case "FLOWER":
                 FlowerDisplay();
                 break;
         }
 
+
+    }
+
+    private void Update()
+    {
+        switch (tag)
+        {
+            case "DROP":
+                DragDropRefresh();
+                break;
+
+            case "FLOWER":
+                FlowerRefresh();
+                break;
+        }
+    }
+
+    void DragDropRefresh()
+    {
+        //check if all the elements of array are empty
+        bool didAllFade = true;
+
+        for (int i = 0; i < 4; i++)
+        {
+            fadeDestroy = wordSlots[i].gameObject.GetComponent<FadeAndDestroy>();
+            if (fadeDestroy.faded == false)
+            {
+                didAllFade = false;
+                break;
+            }
+        }
+        Debug.Log("didallfade  " + didAllFade);
+        
+        if (didAllFade == true)
+        {
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            Debug.Log("reloaded scene " + currentSceneName);
+
+            SceneManager.LoadScene(currentSceneName);
+        }
+    }
+
+    public void GoToMainScene()
+    {
+        SceneManager.LoadScene("NEW");
+    }
+
+    void FlowerRefresh()
+    {
 
     }
 
@@ -55,7 +107,7 @@ public class DisplayText : MonoBehaviour
 
         string[] pickedWords = wordManager.PickedTopicWords(pickedTopic);
 
-       int random = UnityEngine.Random.Range(1, 7);
+        int random = UnityEngine.Random.Range(1, 7);
 
         //pick a random one of the text thingies and write impostor in that then fill them out using what i used for the other display and check for impostor, spanish and topic
 
@@ -83,30 +135,15 @@ public class DisplayText : MonoBehaviour
                         string impostor = wordManager.dictionary.allWords[random][0];
                         string impostorTopic = wordManager.dictionary.allWords[random][2];
                         //Debug.Log("imostor is  " + impostor + "  and it s topic is  " + impostorTopic);
-                        if(impostorTopic != pickedTopic)
+                        if (impostorTopic != pickedTopic)
                         {
                             wordSlots[i].text = impostor + " THIS";
                             wordSlots[i].tag = "IMPOSTOR";
                             break;
                         }
-
-                        break;
                     }
                     break;
             }
-
-
-            /*if (wordSlots[i].text == "spanish")
-            {
-                wordSlots[i].text = pickedWords[s];
-                s++;
-            }
-            else if (wordSlots[i].text == "english")
-            {
-                wordSlots[i].text = translatedWords[e];
-                e++;
-
-            }*/
 
         }
 
@@ -126,25 +163,28 @@ public class DisplayText : MonoBehaviour
 
         translatedWords = wordManager.RandomizeArray(translatedWords);
 
-        for (int i = 0; i < translatedWords.Length; i++)
+        /*for (int i = 0; i < translatedWords.Length; i++)
         {
             Debug.Log(translatedWords[i]);
-        }
+        }*/
 
         int s = 0;
         int e = 0;
 
         for (int i = 0; i < wordSlots.Length; i++)
         {
-            if (wordSlots[i].text == "spanish")
+
+            switch (wordSlots[i].text)
             {
-                wordSlots[i].text = pickedWords[s];
-                s++;
-            }
-            else if (wordSlots[i].text == "english")
-            {
-                wordSlots[i].text = translatedWords[e];
-                e++;
+                case "english":
+                    wordSlots[i].text = translatedWords[e];
+                    e++;
+                    break;
+
+                case "spanish":
+                    wordSlots[i].text = pickedWords[s];
+                    s++;
+                    break;
 
             }
 
@@ -152,7 +192,7 @@ public class DisplayText : MonoBehaviour
 
     }
 
-    
+
 
 
 }

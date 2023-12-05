@@ -9,6 +9,7 @@ TagManager:
   - NPC
   - DROP
   - FLOWER
+  - IMPOSTOR
   layers:
   - Default
   - TransparentFX

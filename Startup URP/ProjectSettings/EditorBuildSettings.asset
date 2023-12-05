@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ANCA FOLDER/ANCA SCENE.unity
     guid: 9175426e6803af24ebeae8ed5dbe1f69
+  - enabled: 1
+    path: Assets/MARA FOLDER/DragDrop SCENE.unity
+    guid: 0114f67b6a1966d4a85bf28ebe2e282d
+  - enabled: 1
+    path: Assets/ANCA FOLDER/NEW.unity
+    guid: 7981a90f2695fdc41af09148a20c3ff1
   m_configObjects: {}
