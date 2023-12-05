@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     private bool canMove = true;
 
+    private float lookRotationSpeed = 8f;
+
     //finding ink dialogue script to reference
     private void Start()
     {
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
         {
             //checking if the pointer is over a UI element using raycasting
             MoveToMouseClick();
+            FaceTarget();
         }
     }
 
@@ -68,6 +71,13 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    void FaceTarget()
+    {
+        Vector3 direction = (agent.destination - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
     }
 
     //teleporting the player to the empty object child of the npc
