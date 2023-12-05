@@ -8,7 +8,7 @@ public class FadeAndDestroy : MonoBehaviour
 
     public float fadeDelay = 10f;
     public float alphaValue = 0;
-    public bool destroyObject = true;
+    public bool destroyObject = false;
     new TextMeshPro renderer;
 
     public bool faded = false;
@@ -60,7 +60,11 @@ public class FadeAndDestroy : MonoBehaviour
         }
         if (destroyObject)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+
+            faded = true;
+
+            renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 0);
         }
     }
 

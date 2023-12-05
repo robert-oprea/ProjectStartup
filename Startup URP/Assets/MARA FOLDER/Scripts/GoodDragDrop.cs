@@ -70,6 +70,7 @@ public class GoodDragDrop : MonoBehaviour
             }else
             {
                 transform.position = startingPos;
+
             }
 
         }else

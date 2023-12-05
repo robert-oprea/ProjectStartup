@@ -10,6 +10,7 @@ TagManager:
   - DROP
   - FLOWER
   - IMPOSTOR
+  - FRUIT
   layers:
   - Default
   - TransparentFX

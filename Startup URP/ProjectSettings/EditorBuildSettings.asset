@@ -23,4 +23,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ANCA FOLDER/NEW.unity
     guid: 7981a90f2695fdc41af09148a20c3ff1
+  - enabled: 1
+    path: Assets/MARA FOLDER/Flower SCENE 1.unity
+    guid: fe0d087cbfff23f47ba9fa99006c0b19
+  - enabled: 1
+    path: Assets/MARA FOLDER/Flower SCENE 2.unity
+    guid: cc8b565e86f16164db46b600d08b9b1b
+  - enabled: 1
+    path: Assets/MARA FOLDER/Flower SCENE 3.unity
+    guid: 3efbf7da7600e9348b2b310c6d6b30e1
+  - enabled: 1
+    path: Assets/MARA FOLDER/Flower SCENE 4.unity
+    guid: e97fb4765e9d32b45b56411af12144fa
+  - enabled: 1
+    path: Assets/MARA FOLDER/Flower SCENE 5.unity
+    guid: e3a766c4648894c47b276661462b31a7
   m_configObjects: {}
