@@ -3,7 +3,9 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-    
+    const string idle = "Breathing Idle";
+    const string walk = "Happy Walk";
+
     private BasicInkExample inkDialogueScript; //reference to the ink dialogue script
 
     public KeyCode interactKey = KeyCode.E;
@@ -46,8 +48,9 @@ public class PlayerController : MonoBehaviour
         {
             //checking if the pointer is over a UI element using raycasting
             MoveToMouseClick();
-            FaceTarget();
         }
+            FaceTarget();
+        SetAnimation();
     }
 
     public void MoveToMouseClick()
@@ -133,21 +136,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   /* private void EndDialogue()
-    {
-        if (inkDialogueScript != null)
-        {
-            inkDialogueScript.RemoveChildren();
-        }
-        else
-        {
-            Debug.LogError("inkDialogueScript is not assigned");
-        }
-    }*/
-
     void SetAnimation()
     {
-        //for future player animation
+        bool isMoving = agent.velocity.sqrMagnitude > 0;
+
+        // Set the "moving" parameter in the Animator
+        animator.SetBool("moving", isMoving);
     }
 
    
