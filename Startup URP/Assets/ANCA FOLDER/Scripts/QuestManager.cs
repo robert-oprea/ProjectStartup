@@ -11,7 +11,7 @@ public class QuestManager : MonoBehaviour
 
     public static event Action<string> OnQuestStarted;
 
-    public List<Quest> quests = new List<Quest>();
+    private List<Quest> quests = new List<Quest>();
 
     public void StartQuest(string questName)
     {
@@ -38,7 +38,7 @@ public class QuestManager : MonoBehaviour
         switch (questName)
         {
             case "Quest1":
-                GetComponent<Quest1>().StartQuest();
+                //GetComponent<Quest1>().Start();
                 break;
         }
     }

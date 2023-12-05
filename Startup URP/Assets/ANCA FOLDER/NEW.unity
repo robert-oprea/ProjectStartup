@@ -1616,6 +1616,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c2d198e1384a54d889fe9db54c8791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allQuests:
+  - {fileID: 11400000, guid: c7a0262d7de8502458338fd9baea9276, type: 2}
+  - {fileID: 11400000, guid: 142c600194161e843a608c760ae87a9e, type: 2}
+  activeQuests: []
+  completedQuests: []
+  failedQuests: []
 --- !u!4 &1231645388
 Transform:
   m_ObjectHideFlags: 0

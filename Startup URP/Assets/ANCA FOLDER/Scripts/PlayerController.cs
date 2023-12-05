@@ -3,6 +3,9 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
+    const string idle = "Breathing Idle";
+    const string walk = "Happy Walk";
+
     private BasicInkExample inkDialogueScript; //reference to the ink dialogue script
 
     public KeyCode interactKey = KeyCode.E;
@@ -102,23 +105,8 @@ public class PlayerController : MonoBehaviour
                 canMove = false; //player cannot move towards new mouse click
                 StartCoroutine(cameraSwitcher.SwitchToDialogueCamera()); //switching to the second "dialogue" camera
 
-                /*int selectedStoryIndex = npc.ChooseStory();
-
-                // Check if the selected story index is valid
-                if (selectedStoryIndex >= 0 && selectedStoryIndex < npc.inkJSONstories.Count)
-                {
-                    // Set the selected story associated with the NPC
-                    inkDialogueScript.SetStoryJSON(npc.inkJSONstories[selectedStoryIndex]);
-                }
-                else
-                {
-                    Debug.LogError("Invalid story index or no Ink stories found for the NPC.");
-                }*/
-
-               /* 
-
                 //setting the story associated with the npc
-                inkDialogueScript.SetStoryJSON(npc.inkStories[0]);*/
+                inkDialogueScript.SetStoryJSON(npc.inkJSONAsset);
 
                 TeleportPlayerToNPC(npc);
 
