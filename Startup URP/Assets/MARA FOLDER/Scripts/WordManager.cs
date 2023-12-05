@@ -63,15 +63,16 @@ public class WordManager : MonoBehaviour
     public string[] PickedTopicWords(string topic)
     {
 
-        string[] topicWords = new string[10];
+        string[] topicWords = new string[14];
 
-        var v = 0;
+        int index = 0;
+
         for (var i = 0; i < dictionary.lineNr; i++)
         {
-            if (dictionary.allWords[i][2] == topic)
+            if (dictionary.allWords[i][2] == topic && index < topicWords.Length)
             {
-                topicWords[v] = dictionary.allWords[i][1];
-                v++;
+                topicWords[index] = dictionary.allWords[i][0];
+                index++;
             }
         }
 

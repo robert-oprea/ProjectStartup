@@ -27,11 +27,13 @@ public class ReadDictionary : MonoBehaviour
         
         allWords = new string[lines.Length][];
 
+        char separator = lines[0].IndexOf(',') >= 0 ? ',' : ';';
 
+        Debug.Log("Reading " + filename + " separator: " + separator);
         foreach (string line in lines)
         {
             //split each row by the comma's
-            words = line.Split(','); // should work as long as there are no comma's in the Excel sheet  
+            words = line.Split(separator); // should work as long as there are no comma's in the Excel sheet  
 
             //store each split row in a jagged array
             allWords[lineNr] = words;
