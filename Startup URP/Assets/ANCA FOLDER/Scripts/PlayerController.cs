@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     public CameraSwitcher cameraSwitcher; //reference to the camer switcher script
 
+    private Vector3 lastMovementDirection;
+
     [Header("Movement")]
     [SerializeField] LayerMask clickableLayers; //object layer for player to know if they can click on an object or not
 
@@ -76,18 +78,61 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void FaceTarget()
+    /*void FaceTarget()
     {
         Vector3 direction = (agent.destination - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
+        transform.rotation = lookRotation;
+            *//*Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);*//*
+    }*/
+
+    void FaceTarget()
+    {
+        Vector3 direction = (agent.destination - transform.position).normalized;
+
+        // Check if there is movement
+        if (direction.magnitude > 0.1f)
+        {
+            // Update last known movement direction
+            lastMovementDirection = new Vector3(direction.x, 0, direction.z);
+
+            // Calculate rotation towards the movement direction
+            Quaternion lookRotation = Quaternion.LookRotation(lastMovementDirection);
+
+            // Set the rotation directly
+            transform.rotation = lookRotation;
+        }
+        // If there is no movement, maintain the last known movement direction
+        else if (lastMovementDirection.magnitude > 0.1f)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(lastMovementDirection);
+            transform.rotation = lookRotation;
+        }
     }
 
     //teleporting the player to the empty object child of the npc
     private void TeleportPlayerToNPC(NPCController npc)
     {
         transform.position = npc.emptyChildTransform.position;
+
+        // transform.rotation = Quaternion.LookRotation(npc.emptyChildTransform.position);
+
+        Vector3 directionToNPC = npc.transform.position - transform.position;
+        directionToNPC.y = 0f; // Ignore the vertical component
+
+        if (directionToNPC.magnitude > 0.1f)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(directionToNPC);
+            transform.rotation = lookRotation;
+        }
+
         agent.ResetPath(); //resets the path so the player doesnt bump into the object
+
+      /*  Debug.Log(transform.rotation); Debug.Log(npc.transform.rotation);
+       // Quaternion lookRotation = Quaternion.RotateTowards(this.transform.rotation, npc.transform.rotation, 180);
+        transform.LookAt(npc.transform);*/
+        Debug.Log("!" + transform.rotation);
+
     }
 
     //npc logic when player collides with it
