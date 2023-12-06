@@ -123,7 +123,7 @@ public class BasicInkExample : MonoBehaviour {
 						var qm = FindObjectOfType<QuestManager>();
 						if (qm != null)
 						{
-							qm.CheckStartQuest(value);
+							qm.StartQuest(value);
 						}
 						break;
 					default:

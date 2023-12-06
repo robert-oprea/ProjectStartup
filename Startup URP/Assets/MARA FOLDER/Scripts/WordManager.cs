@@ -62,18 +62,29 @@ public class WordManager : MonoBehaviour
 
     public string[] PickedTopicWords(string topic)
     {
-        string[] pickedWords = new string[12];
 
-        var v = 0;
+        string[] topicWords = new string[14];
+
+        int index = 0;
+
         for (var i = 0; i < dictionary.lineNr; i++)
         {
-            if (dictionary.allWords[i][2] == topic)
+            if (dictionary.allWords[i][2] == topic && index < topicWords.Length)
             {
-                pickedWords[v] = dictionary.allWords[i][1];
-                v++;
-
+                topicWords[index] = dictionary.allWords[i][0];
+                index++;
             }
         }
+
+        topicWords = RandomizeArray(topicWords);
+
+        string[] pickedWords = new string[6];
+
+        for (var i = 0; i < pickedWords.Length; i++)
+        {
+            pickedWords[i] = topicWords[i];
+        }
+
 
         return pickedWords;
     }
@@ -94,8 +105,9 @@ public class WordManager : MonoBehaviour
         return ok;
     }
 
-    
+
     string meaning = null;     //??
+
     public string Translate(string word)
     {
         //gets the word and looks for it in the database
@@ -106,10 +118,26 @@ public class WordManager : MonoBehaviour
             if (dictionary.allWords[i][0] == word)
             {
                 meaning = dictionary.allWords[i][1];
-  
+
             }
         }
         return meaning;
+    }
+
+
+    public string[] RandomizeArray(string[] arrayToRandomize)
+    {
+        System.Random random = new System.Random();
+        int n = arrayToRandomize.Length;
+        while (n > 1)
+        {
+            n--;
+            int k = random.Next(n + 1);
+            string temp = arrayToRandomize[k];
+            arrayToRandomize[k] = arrayToRandomize[n];
+            arrayToRandomize[n] = temp;
+        }
+        return arrayToRandomize;
     }
 
 
