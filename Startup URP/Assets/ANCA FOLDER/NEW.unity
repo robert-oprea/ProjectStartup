@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcName: Juan
-  inkJSONAsset: {fileID: 4900000, guid: 977bac0d6cff76f468317a7f514d64cf, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: 6044dfbf2c75c7b4b8066f289a6ed089, type: 3}
   emptyChildTransform: {fileID: 1107043021}
 --- !u!136 &89207107
 CapsuleCollider:
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e957d58a4584a8894329531ec0b096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSONAsset: {fileID: 4900000, guid: 977bac0d6cff76f468317a7f514d64cf, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: 6044dfbf2c75c7b4b8066f289a6ed089, type: 3}
   canvas: {fileID: 979725064}
   textPrefab: {fileID: 11456674, guid: 1aab6ef84d87c416f8f0b3e1ef3d77d2, type: 3}
   buttonPrefab: {fileID: 11455116, guid: 37c108a6c38964f79a6621eccb33ddc1, type: 3}
@@ -359,6 +359,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98237755}
   m_CullTransparentMesh: 0
+--- !u!1 &123998123 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2529161007550082182, guid: 977eb330f651c174899ffc98267dbbf4,
+    type: 3}
+  m_PrefabInstance: {fileID: 8558910855737345204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &152526387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,7 +1900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcName: Marabela
-  inkJSONAsset: {fileID: 4900000, guid: 6044dfbf2c75c7b4b8066f289a6ed089, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: 977bac0d6cff76f468317a7f514d64cf, type: 3}
   emptyChildTransform: {fileID: 2093532272}
 --- !u!23 &2073111582
 MeshRenderer:
@@ -1974,7 +1980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e957d58a4584a8894329531ec0b096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSONAsset: {fileID: 4900000, guid: 6044dfbf2c75c7b4b8066f289a6ed089, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: 977bac0d6cff76f468317a7f514d64cf, type: 3}
   canvas: {fileID: 979725064}
   textPrefab: {fileID: 11456674, guid: 1aab6ef84d87c416f8f0b3e1ef3d77d2, type: 3}
   buttonPrefab: {fileID: 11455116, guid: 37c108a6c38964f79a6621eccb33ddc1, type: 3}
@@ -2016,6 +2022,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8558910855737345204}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1377437282528247983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123998123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1067e7a87e719145bc799724ef2f389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  talkedToJuan: 0
+  talkedToNpc2: 0
+  minigameCompleted: 0
 --- !u!1001 &8558910855737345204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2091,7 +2112,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1080654688}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2529161007550082182, guid: 977eb330f651c174899ffc98267dbbf4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1377437282528247983}
   m_SourcePrefab: {fileID: 100100000, guid: 977eb330f651c174899ffc98267dbbf4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

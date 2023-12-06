@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = npc.emptyChildTransform.position;
 
-        // transform.rotation = Quaternion.LookRotation(npc.emptyChildTransform.position);
+        /*// transform.rotation = Quaternion.LookRotation(npc.emptyChildTransform.position);
 
         Vector3 directionToNPC = npc.transform.position - transform.position;
         directionToNPC.y = 0f; // Ignore the vertical component
@@ -124,14 +124,13 @@ public class PlayerController : MonoBehaviour
         {
             Quaternion lookRotation = Quaternion.LookRotation(directionToNPC);
             transform.rotation = lookRotation;
-        }
+        }*/
 
         agent.ResetPath(); //resets the path so the player doesnt bump into the object
 
       /*  Debug.Log(transform.rotation); Debug.Log(npc.transform.rotation);
        // Quaternion lookRotation = Quaternion.RotateTowards(this.transform.rotation, npc.transform.rotation, 180);
         transform.LookAt(npc.transform);*/
-        Debug.Log("!" + transform.rotation);
 
     }
 
@@ -146,7 +145,36 @@ public class PlayerController : MonoBehaviour
 
             if (npc != null && Input.GetKeyDown(interactKey)) //when the player collides with an  npc and they press the interaction key
             {
+
+                //INTERACTION WITH NPCS
+                QuestGame questGame = GetComponent<QuestGame>();
+                if(npc.npcName == "Juan")
+                {
+                    if (questGame != null)
+                    {
+                        questGame.talkedToJuan = true;
+                        Debug.Log("juan dami quest");
+                    }
+                }
+
+                if (npc.npcName == "Grandma")
+                {
+                    if (questGame != null)
+                    {
+                       if (questGame.talkedToJuan)
+                        {
+                            //dialogue node 1 si poti face minigame ul
+                        }
+                       else
+                        {
+                            //dialogue node 2 si nu poti face minigame ul ca gen nu ai choice ul in dialog
+                        }
+                    }
+                }
+
+
                 Debug.Log("Interacted with NPC: " + npc.npcName);
+                
                 canMove = false; //player cannot move towards new mouse click
                 StartCoroutine(cameraSwitcher.SwitchToDialogueCamera()); //switching to the second "dialogue" camera
 
