@@ -11,6 +11,8 @@ public class FadeAndDestroy : MonoBehaviour
     public bool destroyObject = false;
     new TextMeshPro renderer;
 
+    
+
     public bool faded = false;
 
     void Start()
