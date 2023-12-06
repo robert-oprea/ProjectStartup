@@ -117,20 +117,25 @@ public class BasicInkExample : MonoBehaviour {
 				string command = words[0];
 				string value = words[1];
 
-				switch (command)
-				{
-					case "startQuest":
-						var qm = FindObjectOfType<QuestManager>();
-						if (qm != null)
-						{
-							qm.StartQuest(value);
-						}
-						break;
-					default:
-						Debug.Log("WARNING: Command not recognized: " + command);
-						break;
-				}
-			}
+                switch (command)
+                {
+                    case "startQuest":
+                        var qm = FindObjectOfType<QuestManager>();
+                        if (qm != null)
+                        {
+                            qm.StartQuest(value);
+                        }
+                        break;
+                    case "juan":
+						Debug.Log("chose juan option");
+						SceneSwitch sceneSwitch = GetComponent<SceneSwitch>();
+						//sceneSwitch.LoadLevel();
+                        break;	
+                    default:
+                        Debug.Log("WARNING: Command not recognized: " + command);
+                        break;
+                }
+            }
 			else
 			{
 				Debug.Log("WARNING: Tag is not in command:value form");
@@ -138,6 +143,21 @@ public class BasicInkExample : MonoBehaviour {
 		}
 		story.ChooseChoiceIndex (choice.index);
 		RefreshView();
+	}
+	void HandleChoice(string condition)
+	{
+		// Replace this with your actual game logic to determine the condition
+		bool isConditionTrue = true;
+
+		// Choose the appropriate branch based on the condition
+		if (isConditionTrue)
+		{
+			story.ChoosePathString("ConditionIsTrue");
+		}
+		else
+		{
+			story.ChoosePathString("ConditionIsFalse");
+		}
 	}
 
 

@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
             //checking if the pointer is over a UI element using raycasting
             MoveToMouseClick();
         }
-            FaceTarget();
+            
         SetAnimation();
     }
 
@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
                 if (hit.collider != null)
                 {
                     agent.destination = hit.point; //player destination is towards the mouse click
+                    FaceTarget();
                 }
             }
         }
@@ -114,6 +115,7 @@ public class PlayerController : MonoBehaviour
     private void TeleportPlayerToNPC(NPCController npc)
     {
         transform.position = npc.emptyChildTransform.position;
+        transform.rotation = Quaternion.LookRotation(npc.emptyChildTransform.forward);
 
         /*// transform.rotation = Quaternion.LookRotation(npc.emptyChildTransform.position);
 
@@ -155,20 +157,34 @@ public class PlayerController : MonoBehaviour
                         questGame.talkedToJuan = true;
                         Debug.Log("juan dami quest");
                     }
+                    StartDialogue();
                 }
 
-                if (npc.npcName == "Grandma")
+
+                if (npc.npcName == "Marabela")
                 {
+                    Debug.Log("Checking Marabela");
                     if (questGame != null)
                     {
-                       if (questGame.talkedToJuan)
+                        string inkFileName = questGame.talkedToJuan ? "TalkToJuan" : "NoTalkToJuan";
+                        TextAsset inkJSONAsset = Resources.Load<TextAsset>("Ink/" + inkFileName);
+                        
+
+                        if (inkJSONAsset != null)
                         {
-                            //dialogue node 1 si poti face minigame ul
+                            inkDialogueScript.SetStoryJSON(inkJSONAsset);
+                            inkDialogueScript.StartStory();
+
+                            Debug.Log(inkJSONAsset.name);
                         }
-                       else
+                        else
                         {
-                            //dialogue node 2 si nu poti face minigame ul ca gen nu ai choice ul in dialog
+                            Debug.LogError("Ink JSON Asset is null!");
                         }
+                    }
+                    else
+                    {
+                        Debug.LogError("QuestGame is null!");
                     }
                 }
 
@@ -179,11 +195,11 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(cameraSwitcher.SwitchToDialogueCamera()); //switching to the second "dialogue" camera
 
                 //setting the story associated with the npc
-                inkDialogueScript.SetStoryJSON(npc.inkJSONAsset);
+                //inkDialogueScript.SetStoryJSON(npc.inkJSONAsset);
 
                 TeleportPlayerToNPC(npc);
 
-                StartDialogue(); //starts the dialogue scene
+                //StartDialogue(); //starts the dialogue scene
                 Debug.Log("test test");
             }
         }

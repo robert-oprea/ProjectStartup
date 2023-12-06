@@ -18,7 +18,7 @@ public class NPCController : MonoBehaviour
         inkDialogueScript = GetComponent<BasicInkExample>();
 
         //setting the npc-specific json file for the ink dialogue script
-        if (inkDialogueScript != null && inkJSONAsset != null)
+        if (inkDialogueScript != null && inkJSONAsset!=null)
         {
             inkDialogueScript.SetStoryJSON(inkJSONAsset);
         }
