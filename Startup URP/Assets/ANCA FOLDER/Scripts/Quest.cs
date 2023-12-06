@@ -1,14 +1,36 @@
 using System;
+using UnityEngine;
 
-[Serializable]
 public class Quest
 {
     public string questName;
     public bool isStarted;
+    public bool isCompleted;
 
-    public Quest(string name)
+    public Quest(string name, string desc)
     {
-        this.questName = name;
-        this.isStarted = false;
+        questName = name;
+        isStarted = false;
+        isCompleted = false;
+    }
+
+    public void StartQuest()
+    {
+        if (!isStarted && !isCompleted)
+        {
+            isStarted = true;
+            Debug.Log("Quest started: " + questName);
+            // Additional logic for starting the quest
+        }
+    }
+
+    public void CompleteQuest()
+    {
+        if (isStarted && !isCompleted)
+        {
+            isCompleted = true;
+            Debug.Log("Quest completed: " + questName);
+            // Additional logic for completing the quest
+        }
     }
 }

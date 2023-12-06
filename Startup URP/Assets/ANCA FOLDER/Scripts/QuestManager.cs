@@ -35,11 +35,16 @@ public class QuestManager : MonoBehaviour
 
     private void DoQuest(string questName)
     {
-        switch (questName)
+        Quest questToStart = GetQuestByName(questName);
+
+        if (questToStart != null)
         {
-            case "Quest1":
-                //GetComponent<Quest1>().Start();
-                break;
+            questToStart.StartQuest();
+        }
+        else
+        {
+            Debug.LogError("Quest not found: " + questName);
         }
     }
+
 }
