@@ -10,6 +10,8 @@ public class Timer : MonoBehaviour
     public float timeLeft;
     public GameObject timesupText;
 
+    SceneSwitch sceneSwitch;
+
 
     void Start()
     {
@@ -17,6 +19,7 @@ public class Timer : MonoBehaviour
         timerBar = GetComponent<Image>();
         timeLeft = maxTime;
 
+        sceneSwitch= GetComponent<SceneSwitch>();
     }
 
     // Update is called once per frame
@@ -29,10 +32,17 @@ public class Timer : MonoBehaviour
         }
         else
         {
-
             timesupText.SetActive(true);
-            Time.timeScale = 0;
+            
+            Invoke("TimeUp", 2.0f);
+            
         }
         
     }
+
+    void TimeUp()
+    {
+        sceneSwitch.GoToMainScene();
+    }
+
 }

@@ -15,7 +15,6 @@ public class GoodDragDrop : MonoBehaviour
 
     FadeAndDestroy fadeDestroy;
 
-    Timer timer = new Timer();
 
 
     private void Start()
@@ -67,7 +66,6 @@ public class GoodDragDrop : MonoBehaviour
             {
                 transform.position = hitInfo.transform.position;
                 Debug.Log("right combo");
-                timer.timeLeft += 3.0f;
 
                 fadeDestroy.StartCoroutine(fadeDestroy.FadeTo(fadeDestroy.alphaValue, fadeDestroy.fadeDelay, hitInfo.transform.gameObject));
 

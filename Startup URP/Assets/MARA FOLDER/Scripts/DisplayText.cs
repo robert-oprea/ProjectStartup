@@ -23,12 +23,17 @@ public class DisplayText : MonoBehaviour
 
     FadeAndDestroy fadeDestroy;
 
-    int random; 
+    int random;
+
+    private SceneSwitch sceneSwitch;
 
     // Start is called before the first frame update
     void Start()
     {
         wordManager = GetComponent<WordManager>();
+
+        sceneSwitch = GetComponent<SceneSwitch>();
+
         random = UnityEngine.Random.Range(1, 7);
 
         
@@ -158,50 +163,7 @@ public class DisplayText : MonoBehaviour
         }
     }
 
-    void FruitDragDropRefresh()
-    {
-        bool didAllFade = true;
-
-        for (int i = 0; i < 4; i++)
-        {
-            fadeDestroy = wordSlots[i].gameObject.GetComponent<FadeAndDestroy>();
-            if (fadeDestroy.faded == false)
-            {
-                didAllFade = false;
-                break;
-            }
-        }
-        Debug.Log("didallfade  " + didAllFade);
-
-        if (didAllFade == true)
-        {
-            ReloadCurrentScene();
-        }
-    }
-
-    void DragDropRefresh()
-    {
-        //check if all the elements of array are empty
-        bool didAllFade = true;
-
-        for (int i = 0; i < 4; i++)
-        {
-            fadeDestroy = wordSlots[i].gameObject.GetComponent<FadeAndDestroy>();
-            if (fadeDestroy.faded == false)
-            {
-                didAllFade = false;
-                break;
-            }
-        }
-        Debug.Log("didallfade  " + didAllFade);
-
-        if (didAllFade == true)
-        {
-            ReloadCurrentScene();
-        }
-    }
-
-
+    
 
     public void FlowerDisplay()
     {
@@ -250,64 +212,64 @@ public class DisplayText : MonoBehaviour
     }
 
 
+    void DragDropRefresh()
+    {
+        //check if all the elements of array are empty
+        bool didAllFade = true;
+
+        for (int i = 0; i < 4; i++)
+        {
+            fadeDestroy = wordSlots[i].gameObject.GetComponent<FadeAndDestroy>();
+            if (fadeDestroy.faded == false)
+            {
+                didAllFade = false;
+                break;
+            }
+        }
+        Debug.Log("didallfade  " + didAllFade);
+
+        if (didAllFade == true)
+        {
+            sceneSwitch.ReloadCurrentScene();
+        }
+    }
+
+    void FruitDragDropRefresh()
+    {
+        bool didAllFade = true;
+
+        for (int i = 0; i < 4; i++)
+        {
+            fadeDestroy = wordSlots[i].gameObject.GetComponent<FadeAndDestroy>();
+            if (fadeDestroy.faded == false)
+            {
+                didAllFade = false;
+                break;
+            }
+        }
+        Debug.Log("didallfade  " + didAllFade);
+
+        if (didAllFade == true)
+        {
+            sceneSwitch.CheckIfGoodScene("Fruit SCENE 3");
+        }
+    }
+
+
+
     void FlowerRefresh()
     {
         fadeDestroy = wordSlots[random].gameObject.GetComponent<FadeAndDestroy>();
         if (fadeDestroy.faded)
         {
-            //GoToMainScene();
-
-            if(SceneManager.GetActiveScene().name == "Flower SCENE 5")
-            {
-                GoToMainScene();
-            }
-            else
-            {
-                GoToNextScene();
-            }
-
-
-            /*switch (SceneManager.GetActiveScene().name)
-            {
-                case "Flower SCENE 1":
-                case "Flower SCENE 2":
-                case "Flower SCENE 3":
-                case "Flower SCENE 4":
-                    GoToNextScene();
-                    break;
-            }*/
+            sceneSwitch.CheckIfGoodScene("Flower SCENE 5");
 
         }
     }
 
     
 
-    public void ReloadCurrentScene()
-    {
-        string currentSceneName = SceneManager.GetActiveScene().name;
-
-        SceneManager.LoadScene(currentSceneName);
-
-        Debug.Log("reloaded scene " + currentSceneName);
-
-    }
-
-    public void GoToNextScene()
-    {
-
-        Debug.Log("load next scene :   " + SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    public void GoToMainScene()
-    {
-        SceneManager.LoadScene("NEW");
-    }
-
-    public void GoToThisScene( string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
+    
 
 
 
