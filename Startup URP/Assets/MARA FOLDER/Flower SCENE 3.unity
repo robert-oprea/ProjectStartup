@@ -160,7 +160,6 @@ MonoBehaviour:
   fadeDelay: 0.4
   alphaValue: 0
   destroyObject: 1
-  faded: 0
 --- !u!65 &30403151
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -361,8 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeDelay: 10
   alphaValue: 0
-  destroyObject: 0
-  faded: 0
+  destroyObject: 1
 --- !u!1 &69030313
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +483,6 @@ MonoBehaviour:
   fadeDelay: 0.4
   alphaValue: 0
   destroyObject: 1
-  faded: 0
 --- !u!65 &626128567
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -686,8 +683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeDelay: 10
   alphaValue: 0
-  destroyObject: 0
-  faded: 0
+  destroyObject: 1
 --- !u!1 &704436193
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,7 +721,6 @@ MonoBehaviour:
   fadeDelay: 0.4
   alphaValue: 0
   destroyObject: 1
-  faded: 0
 --- !u!65 &704436196
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -926,8 +921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeDelay: 10
   alphaValue: 0
-  destroyObject: 0
-  faded: 0
+  destroyObject: 1
 --- !u!1 &774767133
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,7 +958,6 @@ MonoBehaviour:
   fadeDelay: 0.4
   alphaValue: 0
   destroyObject: 1
-  faded: 0
 --- !u!65 &774767136
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1153,8 +1146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeDelay: 10
   alphaValue: 0
-  destroyObject: 0
-  faded: 0
+  destroyObject: 1
 --- !u!1 &1031452523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,7 +1184,6 @@ MonoBehaviour:
   fadeDelay: 0.4
   alphaValue: 0
   destroyObject: 1
-  faded: 0
 --- !u!65 &1031452526
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1393,8 +1384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeDelay: 10
   alphaValue: 0
-  destroyObject: 0
-  faded: 0
+  destroyObject: 1
 --- !u!1 &1075201354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,7 +1422,6 @@ MonoBehaviour:
   fadeDelay: 0.4
   alphaValue: 0
   destroyObject: 1
-  faded: 0
 --- !u!65 &1075201357
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1633,8 +1622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeDelay: 10
   alphaValue: 0
-  destroyObject: 0
-  faded: 0
+  destroyObject: 1
 --- !u!1 &1096151375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,7 +1660,6 @@ MonoBehaviour:
   fadeDelay: 0.4
   alphaValue: 0
   destroyObject: 1
-  faded: 0
 --- !u!65 &1096151378
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1873,8 +1860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeDelay: 10
   alphaValue: 0
-  destroyObject: 0
-  faded: 0
+  destroyObject: 1
 --- !u!1 &1470088472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1912,7 +1898,6 @@ MonoBehaviour:
   fadeDelay: 0.4
   alphaValue: 0
   destroyObject: 1
-  faded: 0
 --- !u!65 &1470088475
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2113,8 +2098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeDelay: 10
   alphaValue: 0
-  destroyObject: 0
-  faded: 0
+  destroyObject: 1
 --- !u!1 &1610389789
 GameObject:
   m_ObjectHideFlags: 0
