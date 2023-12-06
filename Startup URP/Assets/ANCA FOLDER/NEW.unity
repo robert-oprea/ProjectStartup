@@ -1502,13 +1502,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080654684}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.02452137, y: -0.08418073, z: 0.002051306, w: -0.9961466}
-  m_LocalPosition: {x: 2.0091667, y: -8.425359, z: -0.038250297}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.02394635, y: -0.14037924, z: -0.002766983, w: -0.98980427}
+  m_LocalPosition: {x: -0.048, y: 0.046, z: -0.09}
+  m_LocalScale: {x: 0.02, y: 0.020000001, z: 0.020000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 1377437282528247977}
+  m_LocalEulerAnglesHint: {x: 2.673, y: 16.161, z: 0.7}
 --- !u!1 &1107043020
 GameObject:
   m_ObjectHideFlags: 0
@@ -2032,17 +2032,17 @@ PrefabInstance:
     - target: {fileID: 2905580585088644668, guid: 977eb330f651c174899ffc98267dbbf4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.0273898
+      value: 3.89
       objectReference: {fileID: 0}
     - target: {fileID: 2905580585088644668, guid: 977eb330f651c174899ffc98267dbbf4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.460064
+      value: -10.47
       objectReference: {fileID: 0}
     - target: {fileID: 2905580585088644668, guid: 977eb330f651c174899ffc98267dbbf4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.05005987
+      value: 5.94
       objectReference: {fileID: 0}
     - target: {fileID: 2905580585088644668, guid: 977eb330f651c174899ffc98267dbbf4,
         type: 3}
@@ -2086,7 +2086,11 @@ PrefabInstance:
       objectReference: {fileID: 1142348812}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2905580585088644668, guid: 977eb330f651c174899ffc98267dbbf4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1080654688}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 977eb330f651c174899ffc98267dbbf4, type: 3}
 --- !u!1660057539 &9223372036854775807
@@ -2096,7 +2100,6 @@ SceneRoots:
   - {fileID: 152526390}
   - {fileID: 1027325831}
   - {fileID: 945224651}
-  - {fileID: 1080654688}
   - {fileID: 8558910855737345204}
   - {fileID: 683081682}
   - {fileID: 1390944483}
