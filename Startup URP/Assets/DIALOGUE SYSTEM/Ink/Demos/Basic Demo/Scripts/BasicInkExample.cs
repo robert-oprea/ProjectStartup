@@ -100,7 +100,7 @@ public class BasicInkExample : MonoBehaviour {
         // If we've read all the content and there's no choices, the story is finished!
         else
         {
-            Button choice = CreateChoiceView("Start");
+            Button choice = CreateChoiceView("Done");
             choice.onClick.AddListener(delegate
             {
                 RemoveChildren();

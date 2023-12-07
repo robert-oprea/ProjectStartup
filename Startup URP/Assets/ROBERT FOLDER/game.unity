@@ -956,7 +956,7 @@ PrefabInstance:
     - target: {fileID: 7717998978521901499, guid: 07578380c3a664c16b0344472ccc1009,
         type: 3}
       propertyPath: m_Name
-      value: NPC_Friend
+      value: NPC_Friend_Lucia
       objectReference: {fileID: 0}
     - target: {fileID: 7717998978521901499, guid: 07578380c3a664c16b0344472ccc1009,
         type: 3}
@@ -988,6 +988,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1623586732}
+    - targetCorrespondingSourceObject: {fileID: 7717998978521901499, guid: 07578380c3a664c16b0344472ccc1009,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1623586735}
   m_SourcePrefab: {fileID: 100100000, guid: 07578380c3a664c16b0344472ccc1009, type: 3}
 --- !u!1001 &137472841
 PrefabInstance:
@@ -1000,7 +1004,7 @@ PrefabInstance:
     - target: {fileID: 6325548596700192595, guid: 06f52b930d9a94d1cb7d6d50c8ca7c0b,
         type: 3}
       propertyPath: m_Name
-      value: NPC_Grandchild
+      value: NPC_Grandchild_Camila
       objectReference: {fileID: 0}
     - target: {fileID: 6325548596700192595, guid: 06f52b930d9a94d1cb7d6d50c8ca7c0b,
         type: 3}
@@ -2934,7 +2938,7 @@ PrefabInstance:
     - target: {fileID: 6346173904760199409, guid: 022a5a22c39b44217a3ab26d2ecdb419,
         type: 3}
       propertyPath: m_Name
-      value: NPC_StoreWorker
+      value: NPC_StoreWorker_Luis
       objectReference: {fileID: 0}
     - target: {fileID: 6346173904760199409, guid: 022a5a22c39b44217a3ab26d2ecdb419,
         type: 3}
@@ -2973,6 +2977,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1069559587}
+    - targetCorrespondingSourceObject: {fileID: 6346173904760199409, guid: 022a5a22c39b44217a3ab26d2ecdb419,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1069559590}
   m_SourcePrefab: {fileID: 100100000, guid: 022a5a22c39b44217a3ab26d2ecdb419, type: 3}
 --- !u!4 &704354438 stripped
 Transform:
@@ -3737,6 +3745,18 @@ MonoBehaviour:
   textPrefab: {fileID: 11456674, guid: b03cb01b0397a4c51a5d2fc9dca2d4ac, type: 3}
   buttonPrefab: {fileID: 11455116, guid: 4b6fd67ffe1af454481415797d5abaef, type: 3}
   cameraSwitcher: {fileID: 2110353920}
+--- !u!114 &812593940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812593930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6684ae181a849c4f9fbcd0d60e22e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &815260957 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4058628193866499192, guid: 3f394ff2097d247b6895c3c865f1d817,
@@ -4103,7 +4123,7 @@ PrefabInstance:
     - target: {fileID: 1174816644929744071, guid: ffe42a308a06a43699dea8a9699408b4,
         type: 3}
       propertyPath: m_Name
-      value: NPC_KioskGirl
+      value: NPC_KioskGirl_Leila
       objectReference: {fileID: 0}
     - target: {fileID: 1174816644929744071, guid: ffe42a308a06a43699dea8a9699408b4,
         type: 3}
@@ -4811,6 +4831,18 @@ MonoBehaviour:
   textPrefab: {fileID: 11456674, guid: b03cb01b0397a4c51a5d2fc9dca2d4ac, type: 3}
   buttonPrefab: {fileID: 11455116, guid: 4b6fd67ffe1af454481415797d5abaef, type: 3}
   cameraSwitcher: {fileID: 2110353920}
+--- !u!114 &1069559590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069559581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6684ae181a849c4f9fbcd0d60e22e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1167287773
 GameObject:
   m_ObjectHideFlags: 0
@@ -5685,8 +5717,33 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 420281836}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2529161007550082182, guid: 977eb330f651c174899ffc98267dbbf4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1428842948}
   m_SourcePrefab: {fileID: 100100000, guid: 977eb330f651c174899ffc98267dbbf4, type: 3}
+--- !u!1 &1428842942 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2529161007550082182, guid: 977eb330f651c174899ffc98267dbbf4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1412986398}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1428842948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428842942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1067e7a87e719145bc799724ef2f389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  talkedToJuan: 0
+  talkedToNpc2: 0
+  minigameCompleted: 0
 --- !u!1 &1447310123
 GameObject:
   m_ObjectHideFlags: 0
@@ -6226,6 +6283,18 @@ MonoBehaviour:
   npcName: Lucia
   inkJSONAsset: {fileID: 4900000, guid: b582ef35f529d48ce884ebffbc986816, type: 3}
   emptyChildTransform: {fileID: 889996537}
+--- !u!114 &1623586735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623586725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6684ae181a849c4f9fbcd0d60e22e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1637903853
 GameObject:
   m_ObjectHideFlags: 0
@@ -6653,7 +6722,7 @@ PrefabInstance:
     - target: {fileID: 155742744204238330, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
       propertyPath: m_Name
-      value: NPC_Surfer
+      value: NPC_Surfer_Diego
       objectReference: {fileID: 0}
     - target: {fileID: 155742744204238330, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
@@ -6741,6 +6810,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 812593937}
+    - targetCorrespondingSourceObject: {fileID: 155742744204238330, guid: da71e886aaf4948889372d0d1142c01d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 812593940}
   m_SourcePrefab: {fileID: 100100000, guid: da71e886aaf4948889372d0d1142c01d, type: 3}
 --- !u!1 &1806199031
 GameObject:
