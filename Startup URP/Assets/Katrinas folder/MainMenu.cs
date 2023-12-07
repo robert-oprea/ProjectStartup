@@ -17,15 +17,12 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("DummyScene");
+        SceneManager.LoadScene("game");
     }
-
     public void OpenOptions()
     {
         // Deactivate the MainMenu GameObject
         gameObject.SetActive(false);
-
-        
         // Activate the RawImage associated with OptionsVideoPlayer if it's available
         if (flipOptionsPlayer != null)
         {
@@ -53,8 +50,6 @@ public class MainMenu : MonoBehaviour
                 
             }
         }
-        
-
     }
     void FlipRightDone(VideoPlayer vp)
     {
@@ -64,18 +59,11 @@ public class MainMenu : MonoBehaviour
         {
             optionsMenu.SetActive(true);
         }
-
     }
-
-    
-
-
      public void GoBack()
     {
         // Deactivate the MainMenu GameObject
         gameObject.SetActive(false);
-
-        
         // Activate the RawImage associated with OptionsVideoPlayer if it's available
         if (backVideoPlayer != null)
         {
@@ -100,11 +88,8 @@ public class MainMenu : MonoBehaviour
                     backVideoPlayerComponent.Play();
                 }
                 backVideoPlayerComponent.loopPointReached += FlipLeftDone;
-                
             }
         }
-        
-
     }
 
     void FlipLeftDone(VideoPlayer vp)
@@ -117,16 +102,11 @@ public class MainMenu : MonoBehaviour
         }
 
     }
-
-
     public void QuitGame()
     {
         {
         // Deactivate the MainMenu GameObject
         gameObject.SetActive(false);
-
-    
-
         // Activate the RawImage associated with CloseVideoPlayer if it's available
         if (closeVideoPlayer != null)
         {

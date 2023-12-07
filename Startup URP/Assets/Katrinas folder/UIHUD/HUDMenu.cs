@@ -11,6 +11,7 @@ public class GameUI : MonoBehaviour
     public GameObject mainMenuOpen;
     public GameObject settingsMenu;
     public GameObject profile;
+    public GameObject journal;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class GameUI : MonoBehaviour
         profile.SetActive(false);
         questMenu.SetActive(false);
         mainMenuOpen.SetActive(false);
+        journal.SetActive(false);
         Time.timeScale = 1f;
     }
     void OnPanelClick()
@@ -41,6 +43,14 @@ public class GameUI : MonoBehaviour
     public void MainMenu()
     {
         mainMenuOpen.SetActive(true);
+    }
+    public void JournalMenu()
+    {
+        profile.SetActive(false);
+        journal.SetActive(true);
+        mainMenuOpen.SetActive(false);
+
+        Time.timeScale = 0f;
     }
     public void SettingsMenu()
     {
