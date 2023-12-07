@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    //for pc
     void Update()
     {
         //checking for left mouse button click
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
             
         SetAnimation();
     }
+
 
     public void MoveToMouseClick()
     {
@@ -72,13 +74,49 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /*void FaceTarget()
+    //for mobile
+    /*void Update()
     {
-        Vector3 direction = (agent.destination - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = lookRotation;
-            *//*Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);*//*
+        // Check for touch input
+        if (canMove && Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            // Check if it's the beginning of a touch
+            if (touch.phase == TouchPhase.Began)
+            {
+                // Checking if the pointer is over a UI element using raycasting
+                MoveToTouchPosition(touch.position);
+            }
+        }
+
+        SetAnimation();
     }*/
+
+    /*public void MoveToTouchPosition(Vector2 touchPosition)
+    {
+        if (cameraSwitcher.ActiveCamera != null)
+        {
+            // Checking if the second camera is active
+            if (cameraSwitcher.ActiveCamera == cameraSwitcher.otherCamera)
+            {
+                return; // Player is not allowed to move when the second camera is active
+            }
+
+            RaycastHit hit;
+            Ray ray = cameraSwitcher.ActiveCamera.ScreenPointToRay(touchPosition); // Raycasting to where the touch occurred
+
+            if (Physics.Raycast(ray, out hit, 100, clickableLayers)) // If the player touched the layer we want it to walk on
+            {
+                if (hit.collider != null)
+                {
+                    agent.destination = hit.point; // Player destination is towards the touch position
+                    FaceTarget();
+                }
+            }
+        }
+    }*/
+
 
     void FaceTarget()
     {
@@ -108,15 +146,9 @@ public class PlayerController : MonoBehaviour
     private void TeleportPlayerToNPC(NPCController npc)
     {
         transform.position = npc.emptyChildTransform.position;
-        transform.rotation = Quaternion.LookRotation(npc.emptyChildTransform.forward);
-
-       
+        transform.rotation = Quaternion.LookRotation(npc.emptyChildTransform.forward);   
 
         agent.ResetPath(); //resets the path so the player doesnt bump into the object
-
-      /*  Debug.Log(transform.rotation); Debug.Log(npc.transform.rotation);
-       // Quaternion lookRotation = Quaternion.RotateTowards(this.transform.rotation, npc.transform.rotation, 180);
-        transform.LookAt(npc.transform);*/
 
     }
 
