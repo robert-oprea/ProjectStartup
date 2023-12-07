@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
 
                 //INTERACTION WITH NPCS
                 QuestGame questGame = GetComponent<QuestGame>();
-                if(npc.npcName == "Juan")
+                if(npc.npcName == "Friend")
                 {
                     if (questGame != null)
                     {
@@ -181,7 +181,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (questGame != null)
                     {
-                        string inkFileName = "Bootcamp";
+                        string inkFileName = "Surfer";
                         TextAsset inkJSONAsset = Resources.Load<TextAsset>("Ink/" + inkFileName);
 
 
@@ -204,12 +204,12 @@ public class PlayerController : MonoBehaviour
                 }
 
 
-                if (npc.npcName == "Marabela")
+                if (npc.npcName == "Luis")
                 {
                     Debug.Log("Checking Marabela");
                     if (questGame != null)
                     {
-                        string inkFileName = questGame.talkedToJuan ? "TalkToJuan" : "NoTalkToJuan";
+                        string inkFileName = questGame.talkedToJuan ? "grocery_worker" : "grocery_worker_no_task";
                         TextAsset inkJSONAsset = Resources.Load<TextAsset>("Ink/" + inkFileName);
                         
 
