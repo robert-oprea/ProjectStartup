@@ -11,6 +11,8 @@ public class FadeAndDestroy : MonoBehaviour
     public bool destroyObject = false;
     new TextMeshPro renderer;
 
+
+    AudioSource audioSource;
     
 
     public bool faded = false;
@@ -19,6 +21,9 @@ public class FadeAndDestroy : MonoBehaviour
     {
         renderer= GetComponent<TextMeshPro>();
         //StartCoroutine(FadeTo(alphaValue, fadeDelay));
+
+        audioSource = GetComponent<AudioSource>();
+
     }
 
 
@@ -53,6 +58,8 @@ public class FadeAndDestroy : MonoBehaviour
     public IEnumerator FadeTo(float alphaValue, float fadeDelay)
     {
         float alpha = renderer.color.a;
+        audioSource.Play();
+
 
         for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / fadeDelay)
         {
@@ -67,6 +74,7 @@ public class FadeAndDestroy : MonoBehaviour
             faded = true;
 
             renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 0);
+
         }
     }
 
