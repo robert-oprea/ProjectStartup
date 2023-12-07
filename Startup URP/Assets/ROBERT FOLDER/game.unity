@@ -830,7 +830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &97621372
 Transform:
   m_ObjectHideFlags: 0
@@ -3708,7 +3708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcName: Diego
-  inkJSONAsset: {fileID: 0}
+  inkJSONAsset: {fileID: 4900000, guid: a4b1245cd86ea4ba2afa4038fac6aa6a, type: 3}
   emptyChildTransform: {fileID: 307628077}
 --- !u!114 &812593937
 MonoBehaviour:
@@ -3722,7 +3722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e957d58a4584a8894329531ec0b096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSONAsset: {fileID: 0}
+  inkJSONAsset: {fileID: 4900000, guid: a4b1245cd86ea4ba2afa4038fac6aa6a, type: 3}
   canvas: {fileID: 1818106391}
   textPrefab: {fileID: 11456674, guid: b03cb01b0397a4c51a5d2fc9dca2d4ac, type: 3}
   buttonPrefab: {fileID: 11455116, guid: 4b6fd67ffe1af454481415797d5abaef, type: 3}
