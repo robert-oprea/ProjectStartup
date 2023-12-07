@@ -2938,7 +2938,7 @@ PrefabInstance:
     - target: {fileID: 6346173904760199409, guid: 022a5a22c39b44217a3ab26d2ecdb419,
         type: 3}
       propertyPath: m_Name
-      value: NPC_StoreWorker
+      value: NPC_StoreWorker_Luis
       objectReference: {fileID: 0}
     - target: {fileID: 6346173904760199409, guid: 022a5a22c39b44217a3ab26d2ecdb419,
         type: 3}
