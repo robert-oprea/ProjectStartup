@@ -181,7 +181,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (questGame != null)
                     {
-                        string inkFileName = "Surfer";
+                        string inkFileName = "surfer";
                         TextAsset inkJSONAsset = Resources.Load<TextAsset>("Ink/" + inkFileName);
 
 
