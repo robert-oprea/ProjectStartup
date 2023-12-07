@@ -11,9 +11,15 @@ public class BasicInkExample : MonoBehaviour {
 	[SerializeField]
 	private TextAsset inkJSONAsset = null;
 	private Story story;
-	
 
-	void Awake()
+	SceneSwitch sceneSwitch;
+
+    private void Start()
+    {
+         sceneSwitch = GetComponent<SceneSwitch>();
+    }
+
+    void Awake()
 	{
 		// Remove the default message
 		RemoveChildren();
@@ -126,11 +132,17 @@ public class BasicInkExample : MonoBehaviour {
                             qm.StartQuest(value);
                         }
                         break;
+
                     case "juan":
 						Debug.Log("chose juan option");
-						SceneSwitch sceneSwitch = GetComponent<SceneSwitch>();
-						//sceneSwitch.LoadLevel();
-                        break;	
+						sceneSwitch.GoToThisScene("Fruit SCENE 1");
+                        break;
+
+					case "bootcamp":
+						Debug.Log("entered bootcamp");
+						sceneSwitch.GoToThisScene("DragDrop SCENE");
+						break;
+
                     default:
                         Debug.Log("WARNING: Command not recognized: " + command);
                         break;
@@ -144,21 +156,7 @@ public class BasicInkExample : MonoBehaviour {
 		story.ChooseChoiceIndex (choice.index);
 		RefreshView();
 	}
-	void HandleChoice(string condition)
-	{
-		// Replace this with your actual game logic to determine the condition
-		bool isConditionTrue = true;
-
-		// Choose the appropriate branch based on the condition
-		if (isConditionTrue)
-		{
-			story.ChoosePathString("ConditionIsTrue");
-		}
-		else
-		{
-			story.ChoosePathString("ConditionIsFalse");
-		}
-	}
+	
 
 
 	// Creates a textbox showing the the line of text

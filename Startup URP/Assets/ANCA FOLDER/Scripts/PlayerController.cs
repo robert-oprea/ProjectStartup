@@ -3,17 +3,13 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-    const string idle = "Breathing Idle";
-    const string walk = "Happy Walk";
-
-    private BasicInkExample inkDialogueScript; //reference to the ink dialogue script
+       private BasicInkExample inkDialogueScript; //reference to the ink dialogue script
 
     public KeyCode interactKey = KeyCode.E;
 
     NavMeshAgent agent; //agent component for the nav mesh
     Animator animator;
-    Rigidbody rb;
-
+   
     public CameraSwitcher cameraSwitcher; //reference to the camer switcher script
 
     private Vector3 lastMovementDirection;
@@ -24,9 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private bool canMove = true;
 
-    private float lookRotationSpeed = 8f;
-
-    //finding ink dialogue script to reference
+       //finding ink dialogue script to reference
     private void Start()
     {
         inkDialogueScript = FindObjectOfType<BasicInkExample>();
@@ -40,7 +34,6 @@ public class PlayerController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -158,6 +151,32 @@ public class PlayerController : MonoBehaviour
                         Debug.Log("juan dami quest");
                     }
                     StartDialogue();
+                }
+
+                if (npc.npcName == "Bootcamp")
+                {
+                    if (questGame != null)
+                    {
+                        string inkFileName = "Bootcamp";
+                        TextAsset inkJSONAsset = Resources.Load<TextAsset>("Ink/" + inkFileName);
+
+
+                        if (inkJSONAsset != null)
+                        {
+                            inkDialogueScript.SetStoryJSON(inkJSONAsset);
+                            inkDialogueScript.StartStory();
+
+                            Debug.Log(inkJSONAsset.name);
+                        }
+                        else
+                        {
+                            Debug.LogError("Ink JSON Asset is null!");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("QuestGame is null!");
+                    }
                 }
 
 

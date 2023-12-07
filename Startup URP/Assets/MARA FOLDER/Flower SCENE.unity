@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 69030314}
   - component: {fileID: 69030316}
   - component: {fileID: 69030317}
+  - component: {fileID: 69030318}
   m_Layer: 0
   m_Name: WordManager
   m_TagString: FLOWER
@@ -448,6 +449,18 @@ MonoBehaviour:
   - {fileID: 1075201358}
   - {fileID: 30403152}
   - {fileID: 1031452527}
+--- !u!114 &69030318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69030313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6684ae181a849c4f9fbcd0d60e22e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &321738324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,6 +2243,7 @@ GameObject:
   - component: {fileID: 1363813640}
   - component: {fileID: 1363813639}
   - component: {fileID: 1363813638}
+  - component: {fileID: 1363813641}
   m_Layer: 5
   m_Name: timer
   m_TagString: Untagged
@@ -2308,6 +2322,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363813636}
   m_CullTransparentMesh: 1
+--- !u!114 &1363813641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363813636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6684ae181a849c4f9fbcd0d60e22e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1470088472
 GameObject:
   m_ObjectHideFlags: 0

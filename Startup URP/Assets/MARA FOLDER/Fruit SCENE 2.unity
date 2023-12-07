@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 69030314}
   - component: {fileID: 69030316}
   - component: {fileID: 69030317}
+  - component: {fileID: 69030318}
   m_Layer: 0
   m_Name: WordManager
   m_TagString: FRUIT
@@ -208,6 +209,18 @@ MonoBehaviour:
   - {fileID: 1991556613}
   - {fileID: 539454958}
   - {fileID: 1957448650}
+--- !u!114 &69030318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69030313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6684ae181a849c4f9fbcd0d60e22e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &216675639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1856,6 +1869,7 @@ GameObject:
   - component: {fileID: 1293770406}
   - component: {fileID: 1293770405}
   - component: {fileID: 1293770404}
+  - component: {fileID: 1293770407}
   m_Layer: 5
   m_Name: timer
   m_TagString: Untagged
@@ -1934,6 +1948,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293770402}
   m_CullTransparentMesh: 1
+--- !u!114 &1293770407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293770402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6684ae181a849c4f9fbcd0d60e22e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1610389789
 GameObject:
   m_ObjectHideFlags: 0
