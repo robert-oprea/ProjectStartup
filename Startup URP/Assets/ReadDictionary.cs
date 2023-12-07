@@ -29,7 +29,7 @@ public class ReadDictionary : MonoBehaviour
 
         char separator = lines[0].IndexOf(',') >= 0 ? ',' : ';';
 
-        Debug.Log("Reading " + filename + " separator: " + separator);
+        //Debug.Log("Reading " + filename + " separator: " + separator);
         foreach (string line in lines)
         {
             //split each row by the comma's

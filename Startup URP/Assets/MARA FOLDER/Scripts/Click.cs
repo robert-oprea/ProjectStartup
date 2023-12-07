@@ -1,24 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Click : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    FadeAndDestroy fadeDestroy;
+
+    private void Start()
     {
-        
+        fadeDestroy = GetComponent<FadeAndDestroy>();
     }
 
-    // Update is called once per frame
-    void Update()
+    Vector3 MouseWorldPosition()
     {
-        
+
+        var mouseScreenPos = Input.mousePosition;
+        mouseScreenPos.z = Camera.main.WorldToScreenPoint(transform.position).z;
+        return Camera.main.ScreenToWorldPoint(mouseScreenPos);
     }
+
 
     public void OnMouseDown()
     {
-        Debug.Log("clicked smth");
+
+        var rayOrigin = Camera.main.transform.position;
+        var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
+
+        if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hitInfo))
+        {
+            if (hitInfo.transform.tag == "IMPOSTOR")
+            {
+                Debug.Log("clicked on impostor");
+                fadeDestroy.StartCoroutine(fadeDestroy.FadeTo(fadeDestroy.alphaValue, fadeDestroy.fadeDelay));
+
+
+            }
+            else
+            {
+                Debug.Log("clicked smth");
+
+            }
+
+
+        }
+
 
     }
 

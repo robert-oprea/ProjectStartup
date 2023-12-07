@@ -7,9 +7,10 @@ TagManager:
   - SELECTABLE
   - Ground
   - NPC
-  - 2
-  - 3
-  - 1
+  - DROP
+  - FLOWER
+  - IMPOSTOR
+  - FRUIT
   layers:
   - Default
   - TransparentFX

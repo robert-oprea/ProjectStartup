@@ -7,48 +7,52 @@ using static Cinemachine.DocumentationSortingAttribute;
 //manages different scene switching in the game
 public class SceneSwitch : MonoBehaviour
 {
-    public void LoadLevel(string level)
+    
+    public void ReloadCurrentScene()
     {
+        string currentSceneName = SceneManager.GetActiveScene().name;
 
-        Debug.Log("Loaded level: " + level);
+        SceneManager.LoadScene(currentSceneName);
 
-        SceneManager.LoadScene(level);
-
+        Debug.Log("reloaded scene " + currentSceneName);
     }
 
-    public void LoadNextLevel()
+
+    public void GoToNextScene()
     {
+        Debug.Log("load next scene :   " + SceneManager.GetActiveScene().buildIndex);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Debug.Log("Jogo to load: " + SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void LoadGame(string game)
+
+    public void GoToMainScene()
     {
-
-        Debug.Log("Loaded game: " + game);
-        SceneManager.LoadScene(game);
-
+        SceneManager.LoadScene("NEW");
     }
 
-    public void LoadMenu(string menu)
+
+    public void GoToThisScene(string sceneName)
     {
-
-        Debug.Log("Loaded menu: " + menu);
-        SceneManager.LoadScene(menu);
-
+        SceneManager.LoadScene(sceneName);
     }
 
-    public void LoadReward(string reward)
-    {
-
-        Debug.Log("Loaded reward: " + reward);
-        SceneManager.LoadScene(reward);
-
-    }
 
     public void LeaveGame()
     {
         Application.Quit();
     }
+
+    public void CheckIfGoodScene(string sceneName)
+    {
+        if (SceneManager.GetActiveScene().name == sceneName)
+        {
+            GoToMainScene();
+        }
+        else
+        {
+            GoToNextScene();
+        }
+    }
+
 }

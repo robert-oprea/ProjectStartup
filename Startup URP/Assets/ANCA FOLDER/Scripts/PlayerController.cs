@@ -3,18 +3,16 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-    const string idle = "Breathing Idle";
-    const string walk = "Happy Walk";
-
-    private BasicInkExample inkDialogueScript; //reference to the ink dialogue script
+       private BasicInkExample inkDialogueScript; //reference to the ink dialogue script
 
     public KeyCode interactKey = KeyCode.E;
 
     NavMeshAgent agent; //agent component for the nav mesh
     Animator animator;
-    Rigidbody rb;
-
+   
     public CameraSwitcher cameraSwitcher; //reference to the camer switcher script
+
+    private Vector3 lastMovementDirection;
 
     [Header("Movement")]
     [SerializeField] LayerMask clickableLayers; //object layer for player to know if they can click on an object or not
@@ -22,9 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private bool canMove = true;
 
-    private float lookRotationSpeed = 8f;
-
-    //finding ink dialogue script to reference
+       //finding ink dialogue script to reference
     private void Start()
     {
         inkDialogueScript = FindObjectOfType<BasicInkExample>();
@@ -38,7 +34,6 @@ public class PlayerController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -49,6 +44,7 @@ public class PlayerController : MonoBehaviour
             //checking if the pointer is over a UI element using raycasting
             MoveToMouseClick();
         }
+            
         SetAnimation();
     }
 
@@ -76,11 +72,36 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void FaceTarget()
+    /*void FaceTarget()
     {
         Vector3 direction = (agent.destination - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
+        transform.rotation = lookRotation;
+            *//*Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);*//*
+    }*/
+
+    void FaceTarget()
+    {
+        Vector3 direction = (agent.destination - transform.position).normalized;
+
+        // Check if there is movement
+        if (direction.magnitude > 0.1f)
+        {
+            // Update last known movement direction
+            lastMovementDirection = new Vector3(direction.x, 0, direction.z);
+
+            // Calculate rotation towards the movement direction
+            Quaternion lookRotation = Quaternion.LookRotation(lastMovementDirection);
+
+            // Set the rotation directly
+            transform.rotation = lookRotation;
+        }
+        // If there is no movement, maintain the last known movement direction
+        else if (lastMovementDirection.magnitude > 0.1f)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(lastMovementDirection);
+            transform.rotation = lookRotation;
+        }
     }
 
     //teleporting the player to the empty object child of the npc
@@ -88,7 +109,15 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = npc.emptyChildTransform.position;
         transform.rotation = Quaternion.LookRotation(npc.emptyChildTransform.forward);
+
+       
+
         agent.ResetPath(); //resets the path so the player doesnt bump into the object
+
+      /*  Debug.Log(transform.rotation); Debug.Log(npc.transform.rotation);
+       // Quaternion lookRotation = Quaternion.RotateTowards(this.transform.rotation, npc.transform.rotation, 180);
+        transform.LookAt(npc.transform);*/
+
     }
 
     //npc logic when player collides with it
@@ -102,16 +131,86 @@ public class PlayerController : MonoBehaviour
 
             if (npc != null && Input.GetKeyDown(interactKey)) //when the player collides with an  npc and they press the interaction key
             {
+
+                //INTERACTION WITH NPCS
+                QuestGame questGame = GetComponent<QuestGame>();
+                if(npc.npcName == "Juan")
+                {
+                    if (questGame != null)
+                    {
+                        questGame.talkedToJuan = true;
+                        Debug.Log("juan dami quest");
+                    }
+                    inkDialogueScript.SetStoryJSON(npc.inkJSONAsset);
+                    StartDialogue();
+                }
+
+                if (npc.npcName == "Bootcamp")
+                {
+                    if (questGame != null)
+                    {
+                        string inkFileName = "Bootcamp";
+                        TextAsset inkJSONAsset = Resources.Load<TextAsset>("Ink/" + inkFileName);
+
+
+                        if (inkJSONAsset != null)
+                        {
+                            inkDialogueScript.SetStoryJSON(inkJSONAsset);
+                            StartDialogue();
+
+                            Debug.Log(inkJSONAsset.name);
+                        }
+                        else
+                        {
+                            Debug.LogError("Ink JSON Asset is null!");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("QuestGame is null!");
+                    }
+                }
+
+
+                if (npc.npcName == "Marabela")
+                {
+                    Debug.Log("Checking Marabela");
+                    if (questGame != null)
+                    {
+                        string inkFileName = questGame.talkedToJuan ? "TalkToJuan" : "NoTalkToJuan";
+                        TextAsset inkJSONAsset = Resources.Load<TextAsset>("Ink/" + inkFileName);
+                        
+
+                        if (inkJSONAsset != null)
+                        {
+                            inkDialogueScript.SetStoryJSON(inkJSONAsset);
+                            inkDialogueScript.StartStory();
+
+                            Debug.Log(inkJSONAsset.name);
+                        }
+                        else
+                        {
+                            Debug.LogError("Ink JSON Asset is null!");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("QuestGame is null!");
+                    }
+                }
+
+
                 Debug.Log("Interacted with NPC: " + npc.npcName);
+                
                 canMove = false; //player cannot move towards new mouse click
                 StartCoroutine(cameraSwitcher.SwitchToDialogueCamera()); //switching to the second "dialogue" camera
 
                 //setting the story associated with the npc
-                inkDialogueScript.SetStoryJSON(npc.inkJSONAsset);
+                //inkDialogueScript.SetStoryJSON(npc.inkJSONAsset);
 
                 TeleportPlayerToNPC(npc);
 
-                StartDialogue(); //starts the dialogue scene
+                //StartDialogue(); //starts the dialogue scene
                 Debug.Log("test test");
             }
         }

@@ -16,11 +16,12 @@ public class GoodDragDrop : MonoBehaviour
     FadeAndDestroy fadeDestroy;
 
 
+
     private void Start()
     {
 
         startingPos = this.transform.position;
-        fadeDestroy= GetComponent<FadeAndDestroy>();
+        fadeDestroy = GetComponent<FadeAndDestroy>();
 
     }
 
@@ -47,41 +48,38 @@ public class GoodDragDrop : MonoBehaviour
         transform.position = MouseWorldPosition() + offset;
     }
 
-    string translation;
+    //string translation;
+
     void OnMouseUp()
     {
         var rayOrigin = Camera.main.transform.position;
         var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
-        
+
         if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hitInfo))
         {
 
             //check if translation the same as the text in the box
 
-            
-            
-            translation = hitInfo.transform.gameObject.GetComponent<TextMeshPro>().text;
-            
-            
+            string translation = hitInfo.transform.gameObject.GetComponent<TextMeshPro>().text;
+
             if (wordManager.Translate(transform.gameObject.GetComponent<TextMeshPro>().text) == translation)
             {
                 transform.position = hitInfo.transform.position;
                 Debug.Log("right combo");
+
                 fadeDestroy.StartCoroutine(fadeDestroy.FadeTo(fadeDestroy.alphaValue, fadeDestroy.fadeDelay, hitInfo.transform.gameObject));
 
-
-
-            }
-            else
+            }else
             {
                 transform.position = startingPos;
+
             }
 
-        }
-        else
+        }else
         {
             transform.position = startingPos;
         }
+
         transform.GetComponent<Collider>().enabled = true;
     }
 

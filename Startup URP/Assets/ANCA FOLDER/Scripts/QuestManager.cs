@@ -47,4 +47,8 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    private void AddQuest(Quest quest)
+    {
+        quests.Add(quest);
+    }
 }

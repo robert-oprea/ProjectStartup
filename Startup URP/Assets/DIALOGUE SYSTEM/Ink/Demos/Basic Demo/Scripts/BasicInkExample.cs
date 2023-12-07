@@ -11,9 +11,15 @@ public class BasicInkExample : MonoBehaviour {
 	[SerializeField]
 	private TextAsset inkJSONAsset = null;
 	private Story story;
-	
 
-	void Awake()
+	SceneSwitch sceneSwitch;
+
+    private void Start()
+    {
+         sceneSwitch = GetComponent<SceneSwitch>();
+    }
+
+    void Awake()
 	{
 		// Remove the default message
 		RemoveChildren();
@@ -117,20 +123,31 @@ public class BasicInkExample : MonoBehaviour {
 				string command = words[0];
 				string value = words[1];
 
-				switch (command)
-				{
-					case "startQuest":
-						var qm = FindObjectOfType<QuestManager>();
-						if (qm != null)
-						{
-							qm.StartQuest(value);
-						}
+                switch (command)
+                {
+                    case "startQuest":
+                        var qm = FindObjectOfType<QuestManager>();
+                        if (qm != null)
+                        {
+                            qm.StartQuest(value);
+                        }
+                        break;
+
+                    case "juan":
+						Debug.Log("chose juan option");
+						sceneSwitch.GoToThisScene("Fruit SCENE 1");
+                        break;
+
+					case "bootcamp":
+						Debug.Log("entered bootcamp");
+						sceneSwitch.GoToThisScene("DragDrop SCENE");
 						break;
-					default:
-						Debug.Log("WARNING: Command not recognized: " + command);
-						break;
-				}
-			}
+
+                    default:
+                        Debug.Log("WARNING: Command not recognized: " + command);
+                        break;
+                }
+            }
 			else
 			{
 				Debug.Log("WARNING: Tag is not in command:value form");
@@ -139,6 +156,7 @@ public class BasicInkExample : MonoBehaviour {
 		story.ChooseChoiceIndex (choice.index);
 		RefreshView();
 	}
+	
 
 
 	// Creates a textbox showing the the line of text
