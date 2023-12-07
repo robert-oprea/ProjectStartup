@@ -726,7 +726,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 079f2732d48c642f481a17cbb81a0cc6, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 39dd921b381e3496fb2f954826a015d9, type: 2}
   m_BuildHeightMesh: 0
 --- !u!64 &72495361
 MeshCollider:
@@ -960,6 +960,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7717998978521901499, guid: 07578380c3a664c16b0344472ccc1009,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717998978521901499, guid: 07578380c3a664c16b0344472ccc1009,
+        type: 3}
       propertyPath: m_TagString
       value: NPC
       objectReference: {fileID: 0}
@@ -996,6 +1001,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NPC_Grandchild
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325548596700192595, guid: 06f52b930d9a94d1cb7d6d50c8ca7c0b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6325548596700192595, guid: 06f52b930d9a94d1cb7d6d50c8ca7c0b,
         type: 3}
@@ -1825,13 +1835,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307628076}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.039350394, y: 0.97644955, z: 0.018410642, w: 0.21132663}
-  m_LocalPosition: {x: 0.0067, y: 0.0085, z: 0.0453}
+  m_LocalRotation: {x: -0.025199141, y: 0.9540559, z: 0.03538942, w: -0.29646245}
+  m_LocalPosition: {x: 0.006700467, y: 0.008500001, z: 0.045300793}
   m_LocalScale: {x: 0.024920508, y: 0.06792564, z: 0.022616662}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 812593933}
-  m_LocalEulerAnglesHint: {x: 0, y: 123.905, z: 0}
+  m_LocalEulerAnglesHint: {x: -3.014, y: 214.629, z: -3.966}
 --- !u!1 &343954223
 GameObject:
   m_ObjectHideFlags: 0
@@ -3034,7 +3044,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 39dd921b381e3496fb2f954826a015d9, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 3fe7a21a9fecf4de79cf23be02cc729a, type: 2}
   m_BuildHeightMesh: 0
 --- !u!64 &709056686
 MeshCollider:
@@ -4055,13 +4065,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889996536}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7667753, z: -0, w: 0.64191556}
-  m_LocalPosition: {x: 0.0045244023, y: -0.0001025689, z: 0.035315}
+  m_LocalRotation: {x: -0, y: 0.98685366, z: -0, w: -0.16161679}
+  m_LocalPosition: {x: 0.004524575, y: -0.0001025689, z: 0.035315163}
   m_LocalScale: {x: 0.02492052, y: 0.06792564, z: 0.022616673}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1623586730}
-  m_LocalEulerAnglesHint: {x: 0, y: 189.403, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 198.602, z: 0}
 --- !u!1001 &896450666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4094,6 +4104,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NPC_KioskGirl
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174816644929744071, guid: ffe42a308a06a43699dea8a9699408b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1174816644929744071, guid: ffe42a308a06a43699dea8a9699408b4,
         type: 3}
@@ -4560,7 +4575,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 3fe7a21a9fecf4de79cf23be02cc729a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: b8233cd6375c64b04b154a990d2cd6e9, type: 2}
   m_BuildHeightMesh: 0
 --- !u!64 &1047395066
 MeshCollider:
@@ -6169,7 +6184,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.01
+  m_Radius: 0.03
   m_Height: 0.05
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -6191,7 +6206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e957d58a4584a8894329531ec0b096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSONAsset: {fileID: 0}
+  inkJSONAsset: {fileID: 4900000, guid: b582ef35f529d48ce884ebffbc986816, type: 3}
   canvas: {fileID: 1818106391}
   textPrefab: {fileID: 11456674, guid: b03cb01b0397a4c51a5d2fc9dca2d4ac, type: 3}
   buttonPrefab: {fileID: 11455116, guid: 4b6fd67ffe1af454481415797d5abaef, type: 3}
@@ -6209,7 +6224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcName: Lucia
-  inkJSONAsset: {fileID: 0}
+  inkJSONAsset: {fileID: 4900000, guid: b582ef35f529d48ce884ebffbc986816, type: 3}
   emptyChildTransform: {fileID: 889996537}
 --- !u!1 &1637903853
 GameObject:
@@ -6642,48 +6657,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 155742744204238330, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 155742744204238330, guid: da71e886aaf4948889372d0d1142c01d,
+        type: 3}
       propertyPath: m_TagString
       value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 676278403503163200, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.739
+      value: 5.81
       objectReference: {fileID: 0}
     - target: {fileID: 676278403503163200, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.952
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 676278403503163200, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.34
+      value: -9.84
       objectReference: {fileID: 0}
     - target: {fileID: 676278403503163200, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.49931344
+      value: 0.50013614
       objectReference: {fileID: 0}
     - target: {fileID: 676278403503163200, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.031852037
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 676278403503163200, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.86533153
+      value: -0.8659468
       objectReference: {fileID: 0}
     - target: {fileID: 676278403503163200, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.029544083
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 676278403503163200, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -1.107
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 676278403503163200, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
@@ -6693,7 +6713,7 @@ PrefabInstance:
     - target: {fileID: 676278403503163200, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -4.856
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6350746743274399946, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
@@ -6703,7 +6723,7 @@ PrefabInstance:
     - target: {fileID: 6350746743274399946, guid: da71e886aaf4948889372d0d1142c01d,
         type: 3}
       propertyPath: m_Radius
-      value: 0.01
+      value: 0.03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6996,7 +7016,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: b8233cd6375c64b04b154a990d2cd6e9, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 079f2732d48c642f481a17cbb81a0cc6, type: 2}
   m_BuildHeightMesh: 0
 --- !u!64 &1854204173
 MeshCollider:
