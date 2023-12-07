@@ -231,6 +231,60 @@ public class PlayerController : MonoBehaviour
                     }
                 }
 
+                if (npc.npcName == "Camila")
+                {
+                    if (questGame != null)
+                    {
+                        string inkFileName = "grandchild";
+                        TextAsset inkJSONAsset = Resources.Load<TextAsset>("Ink/" + inkFileName);
+
+
+                        if (inkJSONAsset != null)
+                        {
+                            inkDialogueScript.SetStoryJSON(inkJSONAsset);
+                            StartDialogue();
+
+                            Debug.Log(inkJSONAsset.name);
+                        }
+                        else
+                        {
+                            Debug.LogError("Ink JSON Asset is null!");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("QuestGame is null!");
+                    }
+                }
+
+                if (npc.npcName == "Leila")
+                {
+                    if (questGame != null)
+                    {
+                        string inkFileName = "kiosk";
+                        TextAsset inkJSONAsset = Resources.Load<TextAsset>("Ink/" + inkFileName);
+
+
+                        if (inkJSONAsset != null)
+                        {
+                            inkDialogueScript.SetStoryJSON(inkJSONAsset);
+                            StartDialogue();
+
+                            Debug.Log(inkJSONAsset.name);
+                        }
+                        else
+                        {
+                            Debug.LogError("Ink JSON Asset is null!");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("QuestGame is null!");
+                    }
+                }
+
+
+
 
                 Debug.Log("Interacted with NPC: " + npc.npcName);
                 

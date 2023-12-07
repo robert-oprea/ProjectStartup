@@ -223,8 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95976bb405d8799438c4971eb1e735bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcName: Juan
-  inkJSONAsset: {fileID: 4900000, guid: 6044dfbf2c75c7b4b8066f289a6ed089, type: 3}
+  npcName: Lucia
+  inkJSONAsset: {fileID: 4900000, guid: b582ef35f529d48ce884ebffbc986816, type: 3}
   emptyChildTransform: {fileID: 1107043021}
 --- !u!136 &89207107
 CapsuleCollider:
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e957d58a4584a8894329531ec0b096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSONAsset: {fileID: 4900000, guid: 6044dfbf2c75c7b4b8066f289a6ed089, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: b582ef35f529d48ce884ebffbc986816, type: 3}
   canvas: {fileID: 979725064}
   textPrefab: {fileID: 11456674, guid: 1aab6ef84d87c416f8f0b3e1ef3d77d2, type: 3}
   buttonPrefab: {fileID: 11455116, guid: 37c108a6c38964f79a6621eccb33ddc1, type: 3}
@@ -743,7 +743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &683081679
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -846,7 +846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &877978886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2100,7 +2100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95976bb405d8799438c4971eb1e735bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcName: Marabela
+  npcName: Luis
   inkJSONAsset: {fileID: 4900000, guid: 977bac0d6cff76f468317a7f514d64cf, type: 3}
   emptyChildTransform: {fileID: 2093532272}
 --- !u!23 &2073111582
