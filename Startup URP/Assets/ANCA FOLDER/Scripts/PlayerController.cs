@@ -49,24 +49,6 @@ public class PlayerController : MonoBehaviour
         SetAnimation();
     }
 
-    //for mobile
-    /*void Update()
-    {
-        // Check for touch input
-        if (canMove && Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            // Check if it's the beginning of a touch
-            if (touch.phase == TouchPhase.Began)
-            {
-                // Checking if the pointer is over a UI element using raycasting
-                MoveToTouchPosition(touch.position);
-            }
-        }
-
-        SetAnimation();
-    }*/
 
     public void MoveToMouseClick()
     {
@@ -92,6 +74,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //for mobile
+    /*void Update()
+    {
+        // Check for touch input
+        if (canMove && Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            // Check if it's the beginning of a touch
+            if (touch.phase == TouchPhase.Began)
+            {
+                // Checking if the pointer is over a UI element using raycasting
+                MoveToTouchPosition(touch.position);
+            }
+        }
+
+        SetAnimation();
+    }*/
+
     /*public void MoveToTouchPosition(Vector2 touchPosition)
     {
         if (cameraSwitcher.ActiveCamera != null)
@@ -116,13 +117,6 @@ public class PlayerController : MonoBehaviour
         }
     }*/
 
-    /*void FaceTarget()
-    {
-        Vector3 direction = (agent.destination - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = lookRotation;
-            *//*Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);*//*
-    }*/
 
     void FaceTarget()
     {
@@ -152,15 +146,9 @@ public class PlayerController : MonoBehaviour
     private void TeleportPlayerToNPC(NPCController npc)
     {
         transform.position = npc.emptyChildTransform.position;
-        transform.rotation = Quaternion.LookRotation(npc.emptyChildTransform.forward);
-
-       
+        transform.rotation = Quaternion.LookRotation(npc.emptyChildTransform.forward);   
 
         agent.ResetPath(); //resets the path so the player doesnt bump into the object
-
-      /*  Debug.Log(transform.rotation); Debug.Log(npc.transform.rotation);
-       // Quaternion lookRotation = Quaternion.RotateTowards(this.transform.rotation, npc.transform.rotation, 180);
-        transform.LookAt(npc.transform);*/
 
     }
 

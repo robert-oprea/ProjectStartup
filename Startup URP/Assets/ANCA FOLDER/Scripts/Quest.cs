@@ -20,7 +20,7 @@ public class Quest
         {
             isStarted = true;
             Debug.Log("Quest started: " + questName);
-            // Additional logic for starting the quest
+          
         }
     }
 
@@ -30,7 +30,7 @@ public class Quest
         {
             isCompleted = true;
             Debug.Log("Quest completed: " + questName);
-            // Additional logic for completing the quest
+            
         }
     }
 }
