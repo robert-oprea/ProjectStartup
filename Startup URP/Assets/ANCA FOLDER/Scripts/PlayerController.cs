@@ -49,7 +49,6 @@ public class PlayerController : MonoBehaviour
             //checking if the pointer is over a UI element using raycasting
             MoveToMouseClick();
         }
-            FaceTarget();
         SetAnimation();
     }
 
@@ -71,6 +70,7 @@ public class PlayerController : MonoBehaviour
                 if (hit.collider != null)
                 {
                     agent.destination = hit.point; //player destination is towards the mouse click
+                    FaceTarget();
                 }
             }
         }
@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
     private void TeleportPlayerToNPC(NPCController npc)
     {
         transform.position = npc.emptyChildTransform.position;
+        transform.rotation = Quaternion.LookRotation(npc.emptyChildTransform.forward);
         agent.ResetPath(); //resets the path so the player doesnt bump into the object
     }
 
