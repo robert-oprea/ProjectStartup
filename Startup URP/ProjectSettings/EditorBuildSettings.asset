@@ -12,33 +12,6 @@ EditorBuildSettings:
     path: Assets/MARA FOLDER/2 MARA SCENE.unity
     guid: 38d390ebbd32bbb4785cb87e10ecbaa2
   - enabled: 1
-<<<<<<< Updated upstream
-=======
-    path: Assets/ROBERT FOLDER/PROTOTYPE/one.unity
-    guid: ff2d843fe35f2bb48be129a52c54dc9c
-  - enabled: 1
-    path: Assets/ROBERT FOLDER/PROTOTYPE/two.unity
-    guid: 2cef6a27623a64bbd9b43e248a1093bb
-  - enabled: 1
-    path: Assets/ROBERT FOLDER/PROTOTYPE/three.unity
-    guid: a47eca10b3472471585d2ae7adbe326e
-  - enabled: 1
-    path: Assets/ROBERT FOLDER/PROTOTYPE/four.unity
-    guid: 45b16225cc17e48bdb8a2cf9b5e0abc1
-  - enabled: 1
-    path: Assets/ROBERT FOLDER/PROTOTYPE/tutorial.unity
-    guid: a9829d44591f5ea4287bc53062fe91c5
-  - enabled: 1
-    path: Assets/Katrinas folder/DummyScene.unity
-    guid: 9d58b9a516c671746b4a635e68b8d43f
-  - enabled: 1
-    path: Assets/ROBERT FOLDER/game.unity
-    guid: 96c4383d7c0404d41948df90ac44ceae
-  - enabled: 1
-    path: Assets/Scenes/KATRINA SCENE.unity
-    guid: 038ac0e9b52945a4f87b1b314785b65c
-  - enabled: 0
->>>>>>> Stashed changes
     path: Assets/MARA FOLDER/3 MARA SCENE.unity
     guid: 29bfc0127c351b14fb53f174cabbbb9c
   - enabled: 1
