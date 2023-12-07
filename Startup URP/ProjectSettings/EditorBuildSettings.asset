@@ -29,6 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ROBERT FOLDER/PROTOTYPE/tutorial.unity
     guid: a9829d44591f5ea4287bc53062fe91c5
+  - enabled: 1
+    path: Assets/Katrinas folder/DummyScene.unity
+    guid: 9d58b9a516c671746b4a635e68b8d43f
+  - enabled: 1
+    path: Assets/Scenes/KATRINA SCENE.unity
+    guid: 038ac0e9b52945a4f87b1b314785b65c
   - enabled: 0
     path: Assets/MARA FOLDER/3 MARA SCENE.unity
     guid: 29bfc0127c351b14fb53f174cabbbb9c
