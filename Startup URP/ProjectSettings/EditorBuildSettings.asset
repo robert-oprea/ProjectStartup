@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ANCA FOLDER/ANCA SCENE.unity
     guid: 9175426e6803af24ebeae8ed5dbe1f69
+  - enabled: 0
+    path: Assets/ROBERT FOLDER/game 1.unity
+    guid: ff988808f1da30e49b4276cb5426ee2d
+  - enabled: 1
+    path: Assets/Scenes/KATRINA SCENE.unity
+    guid: 038ac0e9b52945a4f87b1b314785b65c
   - enabled: 1
     path: Assets/ROBERT FOLDER/game.unity
     guid: 96c4383d7c0404d41948df90ac44ceae
