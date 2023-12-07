@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("game");
+        SceneManager.LoadScene("DummyScene");
     }
 
     public void OpenOptions()
@@ -66,6 +66,9 @@ public class MainMenu : MonoBehaviour
         }
 
     }
+
+    
+
 
      public void GoBack()
     {
