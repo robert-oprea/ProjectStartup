@@ -19,26 +19,6 @@ public class WordManager : MonoBehaviour
 
         dictionary = GetComponent<ReadDictionary>();
 
-
-
-
-
-        // DEBUGS
-
-        /*Text.text = dictionary.allWords[random][0];
-        
-         
-        var pickedWords = PickWords(4);
-
-        for (var i = 0; i < pickedWords.Length; i++)
-        {
-            Debug.Log(pickedWords[i]);
-
-        }
-
-        var random = Random.Range(0, dictionary.lineNr);
-        Debug.Log(dictionary.allWords[random][0] + " means " + Translate(dictionary.allWords[random][0]));
-        */
     }
 
 
