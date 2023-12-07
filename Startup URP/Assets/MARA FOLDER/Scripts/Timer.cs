@@ -34,7 +34,7 @@ public class Timer : MonoBehaviour
         {
             timesupText.SetActive(true);
             
-            Invoke("TimeUp", 2.0f);
+            Invoke("TimeUp", 1.0f);
             
         }
         

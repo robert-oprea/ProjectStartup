@@ -28,7 +28,7 @@ public class SceneSwitch : MonoBehaviour
 
     public void GoToMainScene()
     {
-        SceneManager.LoadScene("NEW");
+        SceneManager.LoadScene("game");
     }
 
 
