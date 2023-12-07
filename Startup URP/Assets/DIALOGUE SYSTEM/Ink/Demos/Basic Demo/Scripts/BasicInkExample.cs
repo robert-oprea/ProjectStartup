@@ -146,7 +146,12 @@ public class BasicInkExample : MonoBehaviour {
                     default:
                         Debug.Log("WARNING: Command not recognized: " + command);
                         break;
-                }
+					case "daily":
+						Debug.Log("chose dailyTask option");
+						sceneSwitch.GoToThisScene("Flower SCENE 1");
+						break;
+
+				}
             }
 			else
 			{
