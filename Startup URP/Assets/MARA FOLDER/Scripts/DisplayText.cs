@@ -75,28 +75,24 @@ public class DisplayText : MonoBehaviour
 
     void DragDropDisplay()
     {
-        pickedWords = wordManager.PickWords(4);
+        pickedWords = wordManager.PickWords(4); // picks 4 words
 
         translatedWords = new string[pickedWords.Length];
 
         for (int i = 0; i < pickedWords.Length; i++)
         {
-            translatedWords[i] = wordManager.Translate(pickedWords[i]);
+            // and translates each of them
+            translatedWords[i] = wordManager.Translate(pickedWords[i]); 
         }
 
+        // randomizes the translated words
         translatedWords = wordManager.RandomizeArray(translatedWords);
 
-        /*for (int i = 0; i < translatedWords.Length; i++)
-        {
-            Debug.Log(translatedWords[i]);
-        }*/
-
-        int s = 0;
-        int e = 0;
+        int s = 0; int e = 0;
 
         for (int i = 0; i < wordSlots.Length; i++)
         {
-
+            // displays the words depending on what it should be there
             switch (wordSlots[i].text)
             {
                 case "english":
@@ -108,11 +104,8 @@ public class DisplayText : MonoBehaviour
                     wordSlots[i].text = pickedWords[s];
                     s++;
                     break;
-
             }
-
         }
-
     }
 
     void FruitDragDropDisplay()
@@ -135,10 +128,6 @@ public class DisplayText : MonoBehaviour
 
         translatedWords = wordManager.RandomizeArray(translatedWords);
 
-        /*for (int i = 0; i < translatedWords.Length; i++)
-        {
-            Debug.Log(translatedWords[i]);
-        }*/
 
         int s = 0;
         int e = 0;
@@ -167,18 +156,18 @@ public class DisplayText : MonoBehaviour
 
     public void FlowerDisplay()
     {
+        // picks a random topic
         pickedTopic = wordManager.dictionary.allWords[UnityEngine.Random.Range(0, wordManager.dictionary.lineNr)][2];
 
-        string[] pickedWords = wordManager.PickedTopicWords(pickedTopic);
+        string[] pickedWords = wordManager.PickedTopicWords(pickedTopic); // and picks words with that topic
 
-        //pick a random one of the text thingies and write impostor in that then fill them out using what i used for the other display and check for impostor, spanish and topic
-
-        wordSlots[random].text = "impostor";
+        wordSlots[random].text = "impostor"; // gets a random text gameobject and makes it the impostor
 
         int s = 0;
 
         for (int i = 0; i < wordSlots.Length; i++)
         {
+            // displays the words depending on what it should be there
             switch (wordSlots[i].text)
             {
                 case "topic":
@@ -194,12 +183,13 @@ public class DisplayText : MonoBehaviour
                     while (true)
                     {
                         int random2 = UnityEngine.Random.Range(0, wordManager.dictionary.lineNr);
+                        // picks a random word
                         string impostor = wordManager.dictionary.allWords[random2][0];
                         string impostorTopic = wordManager.dictionary.allWords[random2][2];
-                        //Debug.Log("imostor is  " + impostor + "  and it s topic is  " + impostorTopic);
+                        // and checks if the impostor doesn't have the chosen topic
                         if (impostorTopic != pickedTopic)
                         {
-                            wordSlots[i].text = impostor + " THIS";
+                            wordSlots[i].text = impostor;
                             wordSlots[i].tag = "IMPOSTOR";
                             break;
                         }

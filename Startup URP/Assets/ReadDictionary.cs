@@ -29,11 +29,10 @@ public class ReadDictionary : MonoBehaviour
 
         char separator = lines[0].IndexOf(',') >= 0 ? ',' : ';';
 
-        //Debug.Log("Reading " + filename + " separator: " + separator);
         foreach (string line in lines)
         {
-            //split each row by the comma's
-            words = line.Split(separator); // should work as long as there are no comma's in the Excel sheet  
+            //split each row by the separator
+            words = line.Split(separator);  
 
             //store each split row in a jagged array
             allWords[lineNr] = words;
@@ -45,18 +44,3 @@ public class ReadDictionary : MonoBehaviour
 
 }
 
-
-
-//instead of an array we can use a list
-//startwith an empty list and after each add 
-//List<string[]> allWords List<List<string>>
-
-//Debug.Log(words[0] + " is the Spanish word for " + words[1]);
-/*for (var i = 0; i < words.Length; i++)
-{
-    Debug.Log(allWords[lineNr][i]);
-
-}
-
-Debug.Log(lineNr);
-*/
