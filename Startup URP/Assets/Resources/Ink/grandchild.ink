@@ -17,6 +17,9 @@
  * Where should I start?
  
 - That's up to you, really. Our town is not the biggest but all people here are kind-hearted. I can tell you one thing though, my grandma has lived here most of her life so talking with her could help. 
+* Could you help me practice some Spanish?
+Of course. Try your best! #daily:quest_on
+
 * Thanks, I'll go do that right away.
-- Oh, and don't forget. If you have any question feel free to ask me!
+Oh, and don't forget. If you have any question feel free to ask me!
     -> END
