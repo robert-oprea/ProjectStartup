@@ -5,7 +5,7 @@
  
 - Oh, my bad. Camila did not tell me you don’t speak Spanish. I said that she told me you’d be around. What brings you to my little store?
   
-* I need to buy a little bit of something for Lucia. Maybe this will also help me learn a few words
+* I need to buy a little bit of something for Lucia. Maybe this will also help me learn a few words #juan:quest_on
 * I heard that your fruits are the best in the area.
 You're right. Let's take a look.
 
