@@ -110,16 +110,7 @@ public class PlayerController : MonoBehaviour
         transform.position = npc.emptyChildTransform.position;
         transform.rotation = Quaternion.LookRotation(npc.emptyChildTransform.forward);
 
-        /*// transform.rotation = Quaternion.LookRotation(npc.emptyChildTransform.position);
-
-        Vector3 directionToNPC = npc.transform.position - transform.position;
-        directionToNPC.y = 0f; // Ignore the vertical component
-
-        if (directionToNPC.magnitude > 0.1f)
-        {
-            Quaternion lookRotation = Quaternion.LookRotation(directionToNPC);
-            transform.rotation = lookRotation;
-        }*/
+       
 
         agent.ResetPath(); //resets the path so the player doesnt bump into the object
 
@@ -150,6 +141,7 @@ public class PlayerController : MonoBehaviour
                         questGame.talkedToJuan = true;
                         Debug.Log("juan dami quest");
                     }
+                    inkDialogueScript.SetStoryJSON(npc.inkJSONAsset);
                     StartDialogue();
                 }
 
@@ -164,7 +156,7 @@ public class PlayerController : MonoBehaviour
                         if (inkJSONAsset != null)
                         {
                             inkDialogueScript.SetStoryJSON(inkJSONAsset);
-                            inkDialogueScript.StartStory();
+                            StartDialogue();
 
                             Debug.Log(inkJSONAsset.name);
                         }
